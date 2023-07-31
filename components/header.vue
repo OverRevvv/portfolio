@@ -3,10 +3,7 @@
         class="flex justify-center bg-[#15103031] sticky top-0 z-40 bg-opacity-40 backdrop-filter backdrop-saturate-150 backdrop-blur-xl firefox:bg-opacity-100">
         <div class="w-full 2xl:w-10/12 2xl:max-w-screen-2xl mx-4">
             <div class="flex justify-between items-center py-3 ">
-                <!-- <a href="https://drive.google.com/file/d/1OiGQC0s-88eSG6syx-8_HXRVjk49691k/view?usp=sharing" target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-2xl text-center font-mono md:text-3xl dark:text-transparent sm:mr-52 md:mr-60 lg:mr-80">Resume</a> -->
-                    <img src="logo.svg" alt="logo" class="absolute h-10  sm:h-12 sm:mr-52 md:ml-12 lg:ml-20">
+                    <img src="/images/logo.svg" alt="logo" class="absolute h-10  sm:h-12 sm:mr-52 md:ml-12 lg:ml-20">
                     <div class="h-8 sm:mr-52 md:mr-60 lg:ml-20"/>
                 <ul class="flex">
                     <li v-for="item in headerItems" :key="item.name">
