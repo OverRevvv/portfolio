@@ -10,7 +10,13 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18",
     "nuxt": "^3.5.2"
+  },
+  "dependencies": {
+    "@tresjs/cientos": "^2.3.0",
+    "@tresjs/nuxt": "^1.0.1",
+    "three": "^0.154.0"
   }
 }

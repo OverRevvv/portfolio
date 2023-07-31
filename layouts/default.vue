@@ -1,0 +1,30 @@
+<script setup>
+const showWelcomeScreen = ref(true);
+function welcomeScreen() {
+    setTimeout(() => {
+        showWelcomeScreen.value = false;
+    }, 1000 * 2);
+}
+welcomeScreen();
+</script>
+
+<template>
+    <div class="bg-[#050816]">
+        <StarField />
+        <Welcome class="h-full w-full absolute z-50 backdrop-blur-md shadow-md " v-if="showWelcomeScreen"/>
+        <div class="flex flex-col z-20">
+            <Header />
+            <slot />
+            <Footer class="mt-auto" />
+        </div>
+    </div>
+</template>
+<style  scoped> .spbg {
+     /* background: url('https://i.ytimg.com/vi/nqxrFkfgLJY/maxresdefault.jpg') repeat-y center center/cover; */
+     /* background-color: #663dff; */
+     background-color: #673dff73;
+     /* background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%); */
+     background-image: linear-gradient(319deg, #673dff73 0%, #aa00ff8c 37%, #cc44989d 100%);
+
+ }
+</style>

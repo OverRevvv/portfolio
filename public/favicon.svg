@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="324.6266 135.4819 232.0093 227.6539" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a">
+      <stop stop-color="#0df" style="--darkreader-inline-stopcolor:#00b1cc" data-darkreader-inline-stopcolor="" offset="0"/>
+      <stop stop-color="#ff00d4" style="--darkreader-inline-stopcolor:#cc00aa" data-darkreader-inline-stopcolor="" offset="1"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(3.8668220043182373, 0, 0, 3.79423189163208, 316.89300537109375, 127.89345550537111)" fill="url(#a)" featurekey="odWo6G-0" style="">
+    <title xmlns="http://www.w3.org/2000/svg">racing-car-meter-speeding</title>
+    <path d="M32,2A30,30,0,1,0,62,32,30.034,30.034,0,0,0,32,2Zm0,58A28,28,0,1,1,60,32,28.032,28.032,0,0,1,32,60Z" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="M32,6A26,26,0,1,0,58,32,26.029,26.029,0,0,0,32,6Zm0,50A24,24,0,1,1,56,32,24.028,24.028,0,0,1,32,56Z" xmlns="http://www.w3.org/2000/svg"/>
+    <rect x="9" y="31" width="4" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect x="51" y="31" width="4" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-19.397 12.598) rotate(-29.995)" x="11.813" y="41.5" width="4.001" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-4.027 27.969) rotate(-29.995)" x="48.186" y="20.5" width="4.001" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-11.713 22.715) rotate(-60.005)" x="12.813" y="19.5" width="2" height="4.001" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-11.711 64.719) rotate(-60.005)" x="49.186" y="40.5" width="2" height="4.001" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-4.026 12.598) rotate(-29.995)" x="20.5" y="11.813" width="2" height="4.001" xmlns="http://www.w3.org/2000/svg"/>
+    <rect x="31" y="9" width="2" height="4" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(9.29 43.716) rotate(-60.005)" x="40.5" y="12.813" width="4.001" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-17.209 30.443) rotate(-75)" x="10.233" y="24.935" width="2" height="3" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(2.825 78.812) rotate(-75)" x="51.767" y="36.065" width="2" height="3" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-6.957 16.797) rotate(-45)" x="15.797" y="15.297" width="2" height="3" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-2.007 7.225) rotate(-15)" x="25.435" y="9.733" width="2" height="3" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(16.992 44.611) rotate(-75)" x="36.065" y="10.233" width="3" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(1.948 38.297) rotate(-45)" x="45.703" y="15.797" width="3" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-5.044 14.558) rotate(-15)" x="51.267" y="25.435" width="3" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <rect transform="translate(-9.34 4.187) rotate(-15)" x="9.733" y="36.565" width="3" height="2" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="M48.465,36.249A17,17,0,1,0,17.275,40.5a1,1,0,0,0,1.731-1,15,15,0,1,1,27.521-3.748,1,1,0,1,0,1.938.5Z" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="M35.633,30.226a.931.931,0,0,0-.093-.05,3.989,3.989,0,1,0-3.78,5.8l13.9,4.965A.983.983,0,0,0,46,41a1,1,0,0,0,.633-1.774ZM30,32a2,2,0,1,1,2,2A2,2,0,0,1,30,32Zm4.725,2.912a3.976,3.976,0,0,0,1.134-1.917L40.9,37.114Z" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="m36 42h-8a5 5 0 0 0 0 10h8a5 5 0 0 0 0-10zm0 8h-8a3 3 0 0 1 0-6h8a3 3 0 0 1 0 6z" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="m30 46h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z" xmlns="http://www.w3.org/2000/svg"/>
+    <path d="m36 46h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z" xmlns="http://www.w3.org/2000/svg"/>
+  </g>
+</svg>
