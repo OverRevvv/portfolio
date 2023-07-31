@@ -42,7 +42,7 @@ function  timePosition(itemId:number) {
                 </div>
                 <!-- <div class="w-10 h-10 rounded-full translate-y-[28rem] border-4 bg-[#17132b] border-[#17132b] p-1" > -->
                 <div class="w-10 h-10 rounded-full translate-y-[40rem] border-4 bg-[#17132b] border-[#17132b] p-1" >
-                    <img src="images/experience/gc2.svg" alt="GoogleCloud">
+                    <img src="/images/experience/gc2.svg" alt="GoogleCloud">
                     </div>
             </div>
         <div class="flex flex-col justify-center items-center min-w-full ">
