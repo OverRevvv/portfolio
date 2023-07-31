@@ -18,7 +18,7 @@ const data = [
     <div class="font-mono">
         <div class="text-4xl sm:text-6xl text-center dark:text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
-        <div class="absolute sm:block hidden h-full w-full top-[45rem] left-80">
+        <div class="absolute h-1/2 sm:h-full w-11/12 sm:w-full sm:top-[45rem] sm:left-80">
                 <Earth />
         </div>
         <div class="flex flex-col sm:ml-32">

@@ -36,11 +36,9 @@ function  timePosition(itemId:number) {
     <div class="font-mono">
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-16">Experience</div>
             <div class="timeline-div">
-                <!-- <div  class="w-10 h-10  rounded-full translate-y-5 border-4 bg-[#17132b] border-[#17132b] p-1" > -->
                 <div  class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1" >
                     <img src="/images/experience/gc.svg" alt="Arcade">
                 </div>
-                <!-- <div class="w-10 h-10 rounded-full translate-y-[28rem] border-4 bg-[#17132b] border-[#17132b] p-1" > -->
                 <div class="w-10 h-10 rounded-full translate-y-[40rem] border-4 bg-[#17132b] border-[#17132b] p-1" >
                     <img src="/images/experience/gc2.svg" alt="GoogleCloud">
                     </div>
