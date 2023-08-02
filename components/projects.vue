@@ -20,7 +20,7 @@ const data = [
     <div class="font-mono">
         <div class="text-center text-4xl sm:text-6xl dark:text-teal-300 font-medium my-16">Projects</div>
         <div class="mt-10 sm:flex">
-            <div v-for="item in data" :key="item.url" class="dark:text-gray-200 pt-6 project-card">
+            <div v-for="item in data" :key="item.url" class="blurblur brdr pt-6 project-card">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
                         <img src="/images/social/github/github-dark.png" alt="code" class="max-h-8 w-auto mx-auto" />
                     </a>
@@ -29,9 +29,9 @@ const data = [
                     <img class="m-auto" :src="item.Image" :alt=item.name>
                 </div>
                 </a>
-                <div class="text-xl sm:text-2xl font-medium font-mono dark:text-purple-200">{{ item.name }}</div>
+                <div class="text-xl sm:text-2xl font-semibold font-mono dark:text-pink-500">{{ item.name }}</div>
                     &nbsp;
-                <div class="text-sm sm:text-base pt-1 ">{{ item.description }}</div>
+                <div class="text-sm text-sky-300 sm:text-xl pt-1 ">{{ item.description }}</div>
             </div>
         </div>
         <div class="text-lg sm:text-xl p-4 text-center dark:text-gray-200 mt-4">Checkout
@@ -45,6 +45,7 @@ const data = [
 <style scoped >
 .project-card {
 
-    @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-1/2 p-6 m-4 border border-gray-500 rounded-3xl shadow;
+    /* @apply  bg-[#15103088] text-center block sm:w-1/2 p-6 m-4 border border-gray-500 rounded-3xl; */
+    @apply  bg-[#15103088] text-center block sm:w-1/2 p-6 m-4 rounded-3xl;
 }
 </style>

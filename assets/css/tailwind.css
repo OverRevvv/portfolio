@@ -30,6 +30,9 @@ body{
   --tw-backdrop-blur: blur(1px);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
+.brdr{
+  @apply border border-l-pink-600 border-b-pink-600 border-r-blue-600 border-t-blue-600;
+}
 .mouseOuter{
   @apply absolute mx-auto top-[25.8rem] sm:top-96 sm:translate-x-24 z-10 w-[35px] h-[64px] rounded-3xl border-4 border-[#454b4e] flex justify-center items-start p-2;
 }

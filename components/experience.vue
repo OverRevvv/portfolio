@@ -44,13 +44,13 @@ function  timePosition(itemId:number) {
                     </div>
             </div>
         <div class="flex flex-col justify-center items-center min-w-full ">
-            <div v-for="item in data" :class="cardPosition(item.id)" :key="item.id" class=" card">
-                <div class="text-2xl mb-1 sm:text-3xl font-medium text-purple-200">{{ item.position }}</div>
+            <div v-for="item in data" :class="cardPosition(item.id)" :key="item.id" class="blurblur brdr card">
+                <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
                 <a :href="item.url" target="_blank" rel="noopener noreferrer"
-                    class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-200">{{
+                    class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-300">{{
                         item.company
                     }}</a>
-                <div :class="timePosition(item.id)" class=" my-2 font-sans text-sm sm:text-base font-bold text-gray-400 pb-1">{{ item.time }}</div>
+                <div :class="timePosition(item.id)" class=" my-2 font-sans text-sm sm:text-base font-bold text-violet-400 pb-1">{{ item.time }}</div>
                 <ul class="text-sm sm:text-lg font-normal mb-1 list-disc list-inside" v-for="point in item.points"
                     :key="point">
                     <li class="py-1">{{ point }}</li>
@@ -61,7 +61,8 @@ function  timePosition(itemId:number) {
 </template>
 <style scoped >
 .card {
-    @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-1/3 sm:p-10 sm:m-4 border border-gray-500 rounded-3xl shadow text-gray-200 pt-6 mt-4 h-auto w-11/12;
+    /* @apply  bg-[#15103088] text-center block sm:w-1/3 sm:p-10 sm:m-4 sm:border border-gray-500 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12; */
+    @apply  bg-[#15103088] text-center block sm:w-1/3 sm:p-10 sm:m-4  rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 ;
 }
 .card img{
     width: 10px;
@@ -76,9 +77,9 @@ function  timePosition(itemId:number) {
     @apply sm:transform sm:-translate-x-3/4;
 }
 .timePLeft{
-    @apply sm:text-white sm:transform sm:-translate-x-[31rem] sm:text-lg sm:translate-y-[2rem];
+    @apply  sm:transform sm:-translate-x-[31rem] sm:text-lg sm:translate-y-[2rem];
 }
 .timePRight{
-    @apply sm:text-white  sm:transform sm:translate-x-[31rem] sm:translate-y-[2.8rem] sm:text-lg;
+    @apply  sm:transform sm:translate-x-[31rem] sm:translate-y-[2.8rem] sm:text-lg;
 }
 </style>
