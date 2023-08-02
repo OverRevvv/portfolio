@@ -14,7 +14,6 @@ const data = [
 </script>
 
 <template>
-
     <div class="font-mono">
         <div class="text-4xl sm:text-6xl text-center dark:text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
@@ -33,14 +32,6 @@ const data = [
 
 <style scoped>
 .card {
-    /* @apply backdrop-blur bg-[#11111160] text-center block w-96 p-6 m-4 rounded-3xl shadow; */
     @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl shadow ;
 }
-
-.gpg {
-  background: "#00cea8";
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-}
-/* bg-gradient-to-r from-fuchsia-500 to-cyan-500 */
 </style>

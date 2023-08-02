@@ -45,7 +45,6 @@ const data = [
 <style scoped >
 .project-card {
 
-    /* @apply backdrop-blur bg-[#11111160] text-center block sm:w-1/2 p-6 m-4 border border-gray-500 rounded-3xl shadow; */
     @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-1/2 p-6 m-4 border border-gray-500 rounded-3xl shadow;
 }
 </style>

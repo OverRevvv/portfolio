@@ -64,7 +64,6 @@ export default defineNuxtConfig({
 https://sketchfab.com/3d-models/earths-synthetic-moons-3e510c0b733d4943a1dc1de40d4a1f7b
 https://sketchfab.com/3d-models/earth-orbit-665a96f13ee24657b236a49cb9900061
 https://www.youtube.com/watch?v=0fYi8SGA20k&ab_channel=JavaScriptMastery
-https://johnsondebbie.com/
 https://danielwebsite.vercel.app/
 https://www.freepik.com/free-photos-vectors/car-rpm/3
 https://www.pinterest.com/pin/1013591459865256822/
