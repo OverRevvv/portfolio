@@ -21,7 +21,7 @@ const data = [
                 <Earth />
         </div>
         <div class="flex flex-col sm:ml-32">
-            <div v-for="(item, index) in data" :key="item.heading" class="text-gray-200 mt-4 card">
+            <div v-for="(item, index) in data" :key="item.heading" class="text-gray-200 mt-4 blurblur card">
                 <div class="text-xl sm:text-2xl font-medium mb-1 dark:text-purple-200">{{ item.heading }}</div>
                 <div class="text-lg sm:text-xl font-normal mb-1">{{ item.college }}</div>
                 <div class="text-sm sm:text-base font-light dark:text-gray-400">{{ item.time }}</div>
@@ -32,6 +32,7 @@ const data = [
 
 <style scoped>
 .card {
-    @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl shadow ;
+    /* @apply backdrop-blur-sm bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl shadow ; */
+    @apply bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl;
 }
 </style>

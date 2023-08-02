@@ -5,11 +5,10 @@
                 <intro />
             </section>
             <section class="flex justify-between items-center flex-col sm:flex-row sm:mt-10">
-                <div
-                    class="absolute top-96 translate-x-24 z-10 w-[35px] h-[64px] rounded-3xl border-4 border-[#454b4e] flex justify-center items-start p-2">
-                    <div class="mouseBtn w-3 h-3 rounded-full bg-[#3c3954] mb-1" />
+                <div class="mouseOuter">
+                    <div class="mouseBtn" />
                 </div>
-                <div class="absolute z-30 sm:h-full h-72 w-full top-96  sm:top-12 sm:right-24">
+                <div class="absolute z-30 sm:h-full h-72 w-full top-[26rem]  sm:top-12 sm:right-24">
                     <Pc />
                 </div>
                 <div class="h-64" />

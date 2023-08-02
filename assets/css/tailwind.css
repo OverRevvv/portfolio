@@ -25,9 +25,17 @@ body{
   /* background-image: linear-gradient(315deg, #d4418e 0%, #0652c5 74%); */
   border-radius: 10px;
 }
-
+.blurblur{
+  @apply shadow-transparent;
+  --tw-backdrop-blur: blur(1px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.mouseOuter{
+  @apply absolute mx-auto top-[25.8rem] sm:top-96 sm:translate-x-24 z-10 w-[35px] h-[64px] rounded-3xl border-4 border-[#454b4e] flex justify-center items-start p-2;
+}
 .mouseBtn{
 	animation: bounce 1s infinite;
+  @apply w-3 h-3 rounded-full bg-[#3c3954] mb-1;
 }
 @keyframes bounce {
   0%,100% {
