@@ -45,7 +45,6 @@ onUnmounted(() => {
             <div class="mb-2">
                 <div class="text-4xl sm:ml-12 sm:text-5xl">
                     Hello,I am 
-                    <!-- <a href="https://git.io/typing-svg"><img class="inline-block" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=50&duration=3000&pause=1000&color=C026D3&center=true&vCenter=true&width=260&lines=Arnav;OverRevvv" alt="Typing SVG" /></a> -->
                     <a href="https://git.io/typing-svg">
                         <img
                         class="inline-block"
@@ -61,13 +60,16 @@ onUnmounted(() => {
                 <span class="text-indigo-600">ViewPort Height: {{ viewportHeight }}px</span>
             </div>
         </div>
-        <img src="/images/pfp.jpg" alt="pfp" class="pfp" />
+        <div class="relative">
+        <div class="absolute md:static lg:absolute inset-0 bg-gradient-to-r blur-sm from-[#05abcd] via-[#6665cd] to-[#af1db7] z-10 rounded-full h-52 w-52 md:h-64 md:w-64"/>
+        <img src="/images/pfp.jpg" alt="pfp" class="pfp relative md:-translate-y-64 lg:translate-y-0" />
+        </div>
     </div>
 </template>
 
 <style scoped>
 .container {
-    @apply z-10 dark:text-gray-100 flex items-center justify-between sm:flex-row flex-col-reverse font-mono;
+    @apply z-10 flex items-center justify-between sm:flex-row flex-col-reverse font-mono;
 }
 
 .content-box {
@@ -75,7 +77,8 @@ onUnmounted(() => {
 }
 
 .pfp {
-    @apply rounded-full h-52 w-52 z-30 md:h-64 md:w-64 border-[#490966] border-4;
+    /* @apply rounded-full h-52 w-52 z-30 md:h-64 md:w-64 border-[#490966] border-4; */
+    @apply rounded-full h-52 w-52 z-30 md:h-64 md:w-64 border-4 border-transparent;
 }
 
 </style>

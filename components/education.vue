@@ -21,7 +21,7 @@ const data = [
                 <Earth />
         </div>
         <div class="flex flex-col sm:ml-32">
-            <div v-for="(item, index) in data" :key="item.heading" class="text-gray-200 mt-4 blurblur card brdr">
+            <div v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">
                 <div class="text-xl sm:text-2xl pb-2 font-semibold mb-1 text-pink-500">{{ item.heading }}</div>
                 <div class="text-lg text-sky-300 sm:text-xl pb-2 font-normal mb-1">{{ item.college }}</div>
                 <div class="text-sm sm:text-base font-light text-violet-500">{{ item.time }}</div>
