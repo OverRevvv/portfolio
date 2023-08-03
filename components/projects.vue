@@ -22,7 +22,7 @@ const data = [
         <div class="mt-10 sm:flex">
             <div v-for="item in data" :key="item.url" class="blurblur brdr pt-6 project-card">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
-                        <img src="/images/social/github/github-dark.png" alt="code" class="max-h-8 w-auto mx-auto" />
+                        <img src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto" />
                     </a>
                  <a :href="item.url" target="_blank" rel="noopener noreferrer">   
                 <div class="block pt-4 ">

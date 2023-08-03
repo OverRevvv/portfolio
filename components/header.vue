@@ -9,8 +9,8 @@
                     <li v-for="item in headerItems" :key="item.name">
                         <a :href="item.url" class="flex items-center justify-center" target="_blank"
                             rel="noopener noreferrer">
-                            <img :src="cookie === 'dark' ? item.darkIcon : item.lightIcon"
-                                class="max-h-6 w-auto mr-6" />
+                            <img :src="item.icon"
+                                class="max-h-8 w-auto mr-6" />
                         </a>
                     </li>
                 </ul>
@@ -20,25 +20,21 @@
 </template>
 
 <script setup lang="ts">
-const cookie = useCookie('theme', { default: () => 'dark' });
 const headerItems = [
     {
         name: 'Github',
         url: "https://github.com/OverRevvv",
-        darkIcon: "/images/social/github/github-dark.png",
-        lightIcon: "/images/social/github/github-light.png"
+        icon: "/images/socials/github.png",
     },
     {
         name: 'LinkedIn',
         url: "https://www.linkedin.com/in/overrevvv",
-        darkIcon: "/images/social/linkedin/linkedin.png",
-        lightIcon: "/images/social/linkedin/linkedin.png"
+        icon: "/images/socials/linkedin.png",
     },
     {
         name: 'Twitter',
         url: "https://twitter.com/overrevvv",
-        darkIcon: "/images/social/twitter/twitter-dark.png",
-        lightIcon: "/images/social/twitter/twitter-light.png"
+        icon: "/images/socials/twitter.png",
     }
 ];
 
