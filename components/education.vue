@@ -18,7 +18,9 @@ const data = [
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
         <div class="earthContainer">
+            <ClientOnly>
                 <Earth />
+            </ClientOnly>
         </div>
         <div class="flex flex-col md:ml-0 lg:ml-32">
             <div v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">

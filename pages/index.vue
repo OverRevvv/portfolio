@@ -10,7 +10,9 @@
                 </div>
                 <!-- <div class="absolute z-30 sm:h-full h-72 w-full top-[26rem]  sm:top-12 sm:right-24"> -->
                 <div class="absolute z-30 h-72 top-[26rem] w-full md:top-52 md:h-1/2 md:right-0  lg:h-full lg:top-12 lg:right-24">
-                    <Pc />
+                    <ClientOnly>
+                        <Pc />
+                    </ClientOnly>
                 </div>
                 <div class="h-64" />
                 <WorkIntro />
