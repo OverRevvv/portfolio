@@ -5,7 +5,7 @@ const socials = [
         name: 'Email',
         url: "mailto:arnavbabu2002@gmail.com",
         icon: "/images/socials/mail.png",
-        username: 'mail@overrevvv.dev'
+        username: 'mail@overrevvv'
     },
     {
         name: 'Twitter',
@@ -88,7 +88,7 @@ const socials = [
 </template>
 <style scoped>
 .card {
-    @apply my-4 sm:my-0 sm:p-8 sm:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl;
+    @apply my-4 sm:my-0 sm:p-8 lg:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl md:w-11/12;
 }
 .headingTitle{
     @apply sm:text-[18px] text-[14px] text-center text-violet-500 uppercase tracking-wider font-sans font-bold sm:m-0 mt-4;

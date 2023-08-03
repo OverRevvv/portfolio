@@ -61,25 +61,24 @@ function  timePosition(itemId:number) {
 </template>
 <style scoped >
 .card {
-    /* @apply  bg-[#15103088] text-center block sm:w-1/3 sm:p-10 sm:m-4 sm:border border-gray-500 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12; */
-    @apply  bg-[#15103088] text-center block sm:w-1/3 sm:p-10 sm:m-4  rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 ;
+    @apply  bg-[#15103088] text-center block md:p-2  rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-1/3 lg:p-10 lg:m-4 ;
 }
 .card img{
     width: 10px;
 }
 .timeline-div{
-    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[60rem] sm:flex flex-col justify-start items-center mt-0 absolute left-1/2  transform -translate-x-1/2 hidden;
+    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[60rem] lg:flex flex-col justify-start items-center mt-0 absolute left-1/2  transform -translate-x-1/2 hidden md:hidden ;
 }
 .cardPRight{
-    @apply sm:transform sm:translate-x-3/4;
+    @apply sm:transform md:translate-x-44 lg:translate-x-3/4;
 }
 .cardPLeft{
-    @apply sm:transform sm:-translate-x-3/4;
+    @apply sm:transform md:-translate-x-44 lg:-translate-x-3/4;
 }
 .timePLeft{
-    @apply  sm:transform sm:-translate-x-[31rem] sm:text-lg sm:translate-y-[2rem];
+    @apply  sm:transform md:-translate-x-0 lg:-translate-x-[31rem] lg:text-lg lg:translate-y-[2rem];
 }
 .timePRight{
-    @apply  sm:transform sm:translate-x-[31rem] sm:translate-y-[2.8rem] sm:text-lg;
+    @apply  sm:transform md:translate-x-0 lg:translate-x-[31rem] lg:translate-y-[2.8rem] sm:text-lg;
 }
 </style>

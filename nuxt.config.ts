@@ -9,8 +9,8 @@ export default defineNuxtConfig({
     head: {
       title: "OverRevvv",
       link:[
-            { rel: 'icon', href: 'favicon.svg'},
-            // { rel: 'icon', type: 'image/x-icon', href: 'favicon2.svg'},
+            { rel: 'icon',type: 'image/svg+xml', href: 'favicon.svg'},
+            // { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
       ],
       meta: [
         { name: 'description', content: 'Portfolio website' },
@@ -80,4 +80,11 @@ https://sketchfab.com/3d-models/kawasaki-zx10r-cdf6ae10048544d9b069f89fe5be245d
         {rel: "icon",, type:"image/png", sizes: "16x16", href:, "/favicon-16x16.png"},
         {rel: "manifest" href: "/site.webmanifest"},
       ]
+
+
+      link:[
+            { rel: 'icon', href: 'favicon.svg'},
+            { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
+      ],
+
 */

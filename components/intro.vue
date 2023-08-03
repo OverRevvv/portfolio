@@ -43,7 +43,7 @@ onUnmounted(() => {
     <div class="container">
         <div class="content-box">
             <div class="mb-2">
-                <div class="text-4xl sm:ml-12 sm:text-5xl">
+                <div class="text-4xl md:mb-64 lg:mb-0 sm:ml-12 sm:text-5xl">
                     Hello,I am 
                     <a href="https://git.io/typing-svg">
                         <img
