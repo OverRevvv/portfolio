@@ -10,7 +10,7 @@
                         <a :href="item.url" class="flex items-center justify-center" target="_blank"
                             rel="noopener noreferrer">
                             <img :src="item.icon"
-                                class="max-h-10 w-auto mr-4" />
+                                class="max-h-10 w-auto mr-4" alt="icon" />
                         </a>
                     </li>
                 </ul>

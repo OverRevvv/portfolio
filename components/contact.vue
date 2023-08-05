@@ -35,7 +35,7 @@ const socials = [
 </script>
 <template>
     <div class="font-mono">
-        <h3 class="text-4xl sm:text-6xl text-center dark:text-teal-300 font-medium my-8 sm:my-24">Contacts
+        <h3 class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-8 sm:my-24">Contacts
         </h3>
         <div class="sm:mt-12  overflow-hidden w-full font-mono">
             <div class="card blurblur brdr">

@@ -1,50 +1,5 @@
-<script lang="ts" setup>
-/*
-// Create reactive refs for viewport width and height
-const viewportWidth = ref(0);
-const viewportHeight = ref(0);
-const bigTxt = ref(true);
-
-// const TxtSize = ref(50);
-
-// Update viewport dimensions on window resize
-const handleResize = () => {
-  viewportWidth.value = window.innerWidth;
-  viewportHeight.value = window.innerHeight;
-};
-
-// Add event listener on component mount and remove on component unmount
-onMounted(() => {
-  if (typeof window !== 'undefined') {
-    viewportWidth.value = window.innerWidth;
-    viewportHeight.value = window.innerHeight;
-    window.addEventListener('resize', handleResize);
-  }
-});
-
-// watchEffect(() => {
-if (viewportWidth.value < 600) {
-  // TxtSize.value = 50;
-  bigTxt.value = false;
-} else {
-  // TxtSize.value = 150;
-  bigTxt.value = true;
-}
-// });
-
-onUnmounted(() => {
-  if (typeof window !== 'undefined') {
-    window.removeEventListener('resize', handleResize);
-  }
-});
-*/
-</script>
-
 <template>
   <div class="flex flex-col justify-center items-center ">
-    <!-- <a href="https://git.io/typing-svg"><img
-        :src="`https://readme-typing-svg.demolab.com?font=Space+Mono&weight=600&size=${bigTxt ? 150 : 50}&duration=100&pause=200&center=true&vCenter=true&width=800&height=400&lines=WELCOME;TO;PORTFOLIO;OF;OVERREVVV`"
-        alt="Typing SVG" /></a> -->
     <span class="loader"></span>
     <span class="loader2 mt-8"></span>
   </div>
