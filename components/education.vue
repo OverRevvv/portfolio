@@ -37,6 +37,6 @@ const data = [
     @apply bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl;
 }
 .earthContainer{
-    @apply absolute  w-11/12 h-1/2 md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
+    @apply absolute  w-11/12 h-[65%] md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
 }
 </style>

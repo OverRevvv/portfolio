@@ -72,7 +72,9 @@ const socials = [
                         <h1 class="sm:text-2xl text-pink-500">{{ item.name }}</h1>
                     </div>
                     <div class="smlbox">
+                        <a :href="item.url" class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center" target="_blank" rel="noopener noreferrer" >
                         <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
+                        </a>
                     </div>
                     <div class="smlbox">
                         <a :href="item.url"
