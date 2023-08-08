@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+
+import Tilt from 'vanilla-tilt-vue'
+
 let loading: any;
 const socials = [
     {
@@ -62,7 +65,8 @@ const socials = [
                 </form>
             </div>
         </div>
-        <div class=" sm:mt-12  overflow-hidden w-full font-mono">
+        <div class=" sm:mt-12  w-full font-mono">
+            <Tilt>
             <div class="blurblur brdr card">
                 <p
                     class="headingTitle">
@@ -85,6 +89,7 @@ const socials = [
                     </div>
                 </div>
             </div>
+            </Tilt>
         </div>
     </div>
 </template>
