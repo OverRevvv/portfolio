@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 
-import Tilt from 'vanilla-tilt-vue'
-
 let loading: any;
 const socials = [
     {
@@ -42,8 +40,7 @@ const socials = [
         </h3>
         <div class="sm:mt-12  overflow-hidden w-full font-mono">
             <div class="card blurblur brdr">
-                <p
-                    class="headingTitle">
+                <p class="headingTitle">
                     Get in touch</p>
                 <form action="" class="mt-12 flex flex-col gap-8">
                     <label class="flex flex-col">
@@ -66,18 +63,18 @@ const socials = [
             </div>
         </div>
         <div class=" sm:mt-12  w-full font-mono">
-            <Tilt>
             <div class="blurblur brdr card">
-                <p
-                    class="headingTitle">
+                <p class="headingTitle">
                     Socials</p>
                 <div class="box" v-for="item in socials" :key="item.name">
                     <div class="smlbox">
                         <h1 class="sm:text-2xl text-pink-500">{{ item.name }}</h1>
                     </div>
                     <div class="smlbox">
-                        <a :href="item.url" class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center" target="_blank" rel="noopener noreferrer" >
-                        <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
+                        <a :href="item.url"
+                            class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
+                            target="_blank" rel="noopener noreferrer">
+                            <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
                         </a>
                     </div>
                     <div class="smlbox">
@@ -89,7 +86,6 @@ const socials = [
                     </div>
                 </div>
             </div>
-            </Tilt>
         </div>
     </div>
 </template>
@@ -97,9 +93,11 @@ const socials = [
 .card {
     @apply my-4 sm:my-0 sm:p-8 lg:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl md:w-11/12;
 }
-.headingTitle{
+
+.headingTitle {
     @apply sm:text-[18px] text-[14px] text-center text-violet-500 uppercase tracking-wider font-sans font-bold sm:m-0 mt-4;
 }
+
 .inputBox {
     @apply bg-[#151030] py-4 px-6 placeholder:text-[#aaa6c3] text-white rounded-lg outline-none border-none font-medium w-[90%] mx-auto;
 }

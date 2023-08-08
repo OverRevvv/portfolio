@@ -1,17 +1,12 @@
-<script setup>
-import Tilt from 'vanilla-tilt-vue'
-</script>
 <template>
     <div class="flex flex-col font-mono brdr wrkCrd blurblur">
-        <Tilt>
-            <div class="text-md sm:text-xl  mt-2 text-center">
-                <span class="text-pink-500 font-semibold">Web Developer</span>
-                <br>
-                <span class="text-sky-500">Programmer</span>
-                <br />
-                <span class="text-violet-500">Open Source Contributer</span>
-            </div>
-        </Tilt>
+        <div class="text-md sm:text-xl  mt-2 text-center">
+            <span class="text-pink-500 font-semibold">Web Developer</span>
+            <br>
+            <span class="text-sky-500">Programmer</span>
+            <br />
+            <span class="text-violet-500">Open Source Contributer</span>
+        </div>
     </div>
 </template>
 <style scoped>
