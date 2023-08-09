@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col font-mono brdr wrkCrd blurblur">
-        <div class="text-md sm:text-xl  mt-2 text-center">
+        <div $VanillaTilt data-tilt class="text-md sm:text-xl z-30  mt-2 text-center">
             <span class="text-pink-500 font-semibold">Web Developer</span>
             <br>
             <span class="text-sky-500">Programmer</span>

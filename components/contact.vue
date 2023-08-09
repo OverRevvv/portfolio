@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 let loading: any;
 const socials = [
     {
@@ -63,7 +62,7 @@ const socials = [
             </div>
         </div>
         <div class=" sm:mt-12  w-full font-mono">
-            <div class="blurblur brdr card">
+            <div $VanillaTilt data-tilt class="blurblur brdr card">
                 <p class="headingTitle">
                     Socials</p>
                 <div class="box" v-for="item in socials" :key="item.name">
