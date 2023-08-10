@@ -9,8 +9,8 @@ export default defineNuxtConfig({
     head: {
       title: "OverRevvv",
       link:[
-            { rel: 'icon',type: 'image/svg+xml', href: 'favicon.svg'},
-            // { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
+            // { rel: 'icon',type: 'image/svg+xml', href: 'favicon.svg'},
+            { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
       ],
       meta: [
         { name: 'description', content: 'Portfolio website' },

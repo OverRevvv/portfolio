@@ -20,7 +20,7 @@ const data = [
     <div class="font-mono">
         <div class="text-center text-4xl sm:text-6xl text-teal-300 font-medium my-16">Projects</div>
         <div class="mt-10 sm:flex">
-            <div v-for="item in data" :key="item.url" class="blurblur brdr pt-6 project-card">
+            <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="blurblur brdr pt-6 project-card">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
                         <img src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto" />
                     </a>
