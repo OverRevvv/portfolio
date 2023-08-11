@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col justify-center items-center w-full">
         <div class="w-full 2xl:max-w-screen-lg sm:px-6 px-2">
-            <section class="mt-6">
+            <section class="mt-6 blur-0">
                 <intro />
             </section>
             <section class="flex justify-between items-center flex-col sm:flex-row sm:mt-10">
@@ -14,20 +14,20 @@
                         <Pc />
                     </ClientOnly>
                 </div>
-                <div class="h-64" />
+                <div class="h-64 blur-none"/>
                 <WorkIntro />
             </section>
             <section class="flex justify-between sm:items-center flex-col sm:flex-row mt-6 max-w-full">
                 <Education class="mt-20 min-w-full" />
             </section>
-            <section>
+            <section class="blur-0">
                 <Experience class="mt-10" />
             </section>
-            <section>
+            <section class="blur-0">
                 <Projects class="mt-10" />
                 <!-- <CoffeeMug class="h-96"/> -->
             </section>
-            <section class="my-10 justify-center items-center">
+            <section class="blur-0 my-10 justify-center items-center">
                 <Contact />
             </section>
         </div>

@@ -14,7 +14,7 @@ const data = [
 </script>
 
 <template>
-    <div class="font-mono  overflow-hidden">
+    <div class="font-mono overflow-hidden">
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
         <div class="earthContainer">
@@ -23,7 +23,7 @@ const data = [
             </ClientOnly>
         </div>
         <div class="flex flex-col md:ml-0 lg:ml-32">
-            <div v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">
+            <div $VanillaTilt data-tilt v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">
                 <div class="text-xl sm:text-2xl pb-2 font-semibold mb-1 text-pink-500">{{ item.heading }}</div>
                 <div class="text-lg text-sky-300 sm:text-xl pb-2 font-normal mb-1">{{ item.college }}</div>
                 <div class="text-sm sm:text-base font-light text-violet-500">{{ item.time }}</div>
