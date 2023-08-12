@@ -24,61 +24,69 @@ const data = [
     },
 ]
 
-function  cardPosition(itemId:number) {
+function cardPosition(itemId: number) {
     return itemId % 2 === 0 ? 'cardPRight' : 'cardPLeft';
-  }
+}
 
-function  timePosition(itemId:number) {
+function timePosition(itemId: number) {
     return itemId % 2 === 0 ? 'timePLeft' : 'timePRight';
-  }
+}
 </script>
 <template>
     <div class="font-mono">
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-16">Experience</div>
-            <div class="timeline-div">
-                <div  class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1" >
-                    <img src="/images/experience/gc.svg" alt="Arcade">
-                </div>
-                <div class="w-10 h-10 rounded-full translate-y-[40rem] border-4 bg-[#17132b] border-[#17132b] p-1" >
-                    <img src="/images/experience/gc2.svg" alt="GoogleCloud">
-                    </div>
+        <div class="timeline-div">
+            <div class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1">
+                <img src="/images/experience/gc.svg" alt="Arcade">
             </div>
-        <div class="flex flex-col justify-center items-center min-w-full ">
-            <div v-for="item in data" :class="cardPosition(item.id)" :key="item.id" class="blurblur brdr card">
-                <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
-                <a :href="item.url" target="_blank" rel="noopener noreferrer"
-                    class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-300">{{
-                        item.company
-                    }}</a>
-                <div :class="timePosition(item.id)" class=" my-2 font-sans text-sm sm:text-base font-bold text-violet-400 pb-1">{{ item.time }}</div>
-                <ul class="text-sm sm:text-lg font-normal mb-1 list-disc list-inside" v-for="point in item.points"
-                    :key="point">
-                    <li class="py-1">{{ point }}</li>
-                </ul>
+            <div class="w-10 h-10 rounded-full translate-y-[40rem] border-4 bg-[#17132b] border-[#17132b] p-1">
+                <img src="/images/experience/gc2.svg" alt="GoogleCloud">
+            </div>
+        </div>
+        <div class="flex justify-center min-w-full" v-for="item in data" :key="item.id">
+            <div :class="cardPosition(item.id)" class="flex justify-center w-full">
+                <div $vanillaTilt data-tilt class="card blurblur brdr">
+                    <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
+                    <a :href="item.url" target="_blank" rel="noopener noreferrer"
+                        class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-300">{{
+                            item.company
+                        }}</a>
+                    <div :class="timePosition(item.id)"
+                        class=" my-2 font-sans text-sm sm:text-base font-bold text-violet-400 pb-1">{{ item.time }}</div>
+                    <ul class="text-sm sm:text-lg font-normal mb-1 list-disc list-inside" v-for="point in item.points"
+                        :key="point">
+                        <li class="py-1">{{ point }}</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </template>
 <style scoped >
 .card {
-    @apply  bg-[#15103088] text-center block md:p-2  rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-1/3 lg:p-10 lg:m-4 ;
+    @apply bg-[#15103088] text-center block md:p-2 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:p-10 lg:m-4;
 }
-.card img{
+
+.card img {
     width: 10px;
 }
-.timeline-div{
-    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[60rem] lg:flex flex-col justify-start items-center mt-0 absolute left-1/2  transform -translate-x-1/2 hidden md:hidden ;
+
+.timeline-div {
+    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[60rem] lg:flex flex-col justify-start items-center mt-0 absolute left-1/2 transform -translate-x-1/2 hidden md:hidden;
 }
-.cardPRight{
-    @apply sm:transform md:translate-x-44 lg:translate-x-3/4;
+
+.cardPRight {
+    @apply sm:justify-end sm:pr-24;
 }
-.cardPLeft{
-    @apply sm:transform md:-translate-x-44 lg:-translate-x-3/4;
+
+.cardPLeft {
+    @apply sm:justify-start sm:pl-24;
 }
-.timePLeft{
-    @apply  sm:transform md:-translate-x-0 lg:-translate-x-[31rem] lg:text-lg lg:translate-y-[2rem];
+
+.timePLeft {
+    @apply sm:transform md:-translate-x-0 lg:-translate-x-[31rem] lg:text-lg lg:translate-y-[2rem];
 }
-.timePRight{
-    @apply  sm:transform md:translate-x-0 lg:translate-x-[31rem] lg:translate-y-[2.8rem] sm:text-lg;
-}
-</style>
+
+.timePRight {
+    @apply sm:transform md:translate-x-0 lg:translate-x-[31rem] lg:translate-y-[2.8rem] sm:text-lg;
+}</style>
