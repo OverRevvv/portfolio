@@ -4,7 +4,7 @@ const data = [
         position: 'Participant',
         company: 'The Arcade-Google Cloud Part 1 and Part 2',
         url: 'https://go.qwiklabs.com/arcade',
-        time: '15 October 2022 - 31 June 2023',
+        time: '15 October 2022 - 30 June 2023',
         points: [
             "Fundamentals of the event was same as Before",
             "Arcade was game like program where we had to collect badges by completing labs within a given time, and each badge had it's own niche of Google Cloud Platform"
