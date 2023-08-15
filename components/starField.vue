@@ -46,7 +46,7 @@ loadingScroll();
     <TresPerspectiveCamera ref="cameraRef" :position="[0, 2, 5]" />
     <ScrollControls v-if="loadScroll" ref="scRef" v-model="progress" :smooth-scroll="0.1" :distance="10" html-scroll />
     <Suspense>
-      <Stars :size="0.5" :count="10000" ref="starRef" />
+      <Stars :size="0.5" :depth="30" :count="12000" ref="starRef" />
     </Suspense>
   </TresCanvas>
 </template>

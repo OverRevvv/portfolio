@@ -5,29 +5,35 @@
                 <intro />
             </section>
             <section class="flex justify-between items-center flex-col sm:flex-row sm:mt-10">
+                <div class="absolute bottom-64 z-40 w-full h-28 block sm:hidden blur-0"/>
                 <div class="mouseOuter">
                     <div class="mouseBtn" />
                 </div>
-                <!-- <div class="absolute z-30 sm:h-full h-72 w-full top-[26rem]  sm:top-12 sm:right-24"> -->
                 <div class="absolute z-30 h-72 top-[26rem] w-full md:top-52 md:h-1/2 md:right-0  lg:h-full lg:top-12 lg:right-24">
                     <ClientOnly>
                         <Pc />
                     </ClientOnly>
                 </div>
-                <div class="h-64 blur-none"/>
-                <WorkIntro />
+                <div class="h-72 blur-0 sm:blur-none"/>
+                <div class="absolute -bottom-52 w-full h-72 block sm:hidden blur-0"/>
+                <WorkIntro/>
             </section>
-            <section class="flex justify-between sm:items-center flex-col sm:flex-row mt-6 max-w-full">
+            <section class="flex relative sm:static justify-between sm:items-center flex-col sm:flex-row mt-6 max-w-full">
+                <div class="absolute mx-auto top-10 w-full h-52 block sm:hidden blur-0"/>
+                <div class="absolute mx-auto -bottom-20 w-full h-56 block sm:hidden blur-0"/>
                 <Education class="mt-20 min-w-full" />
             </section>
             <section class="blur-0">
                 <Experience class="mt-10" />
             </section>
-            <section class="blur-0">
+            <section class="blur-0 relative sm:static">
+                <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>
                 <Projects class="mt-10" />
                 <!-- <CoffeeMug class="h-96"/> -->
             </section>
-            <section class="blur-0 my-10 justify-center items-center">
+            <section class="blur-0 my-10 justify-center items-center relative sm:static">
+                <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>
+                <div class="absolute mx-auto -bottom-12 w-full h-40 block sm:hidden blur-0"/>
                 <Contact />
             </section>
         </div>
