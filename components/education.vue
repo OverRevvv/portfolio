@@ -14,7 +14,7 @@ const data = [
 </script>
 
 <template>
-    <div class="font-mono overflow-hidden">
+    <div class="font-mono overflow-hidden relative sm:static">
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
         <div class="earthContainer">
@@ -37,6 +37,6 @@ const data = [
     @apply bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl;
 }
 .earthContainer{
-    @apply absolute  w-11/12 h-[65%] md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
+    @apply absolute mx-auto sm:mx-0 w-11/12 h-full md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
 }
 </style>
