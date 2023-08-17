@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center ">
+  <div class="flex flex-col justify-center items-center h-screen w-full fixed z-50 backdrop-blur-md shadow-md ">
     <span class="loader"></span>
     <span class="loader2 mt-8"></span>
   </div>

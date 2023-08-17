@@ -37,8 +37,8 @@ const socials = [
     <div class="font-mono">
         <h3 class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-8 sm:my-24">Contacts
         </h3>
-        <div class="sm:mt-12  overflow-hidden w-full font-mono">
-            <div class="card blurblur brdr">
+        <div v-motion-slide-visible-bottom class="sm:mt-12 w-full font-mono">
+            <div $VanillaTilt data-tilt class="card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>
                 <form action="" class="mt-12 flex flex-col gap-8">
@@ -61,7 +61,7 @@ const socials = [
                 </form>
             </div>
         </div>
-        <div class=" sm:mt-12  w-full font-mono">
+        <div v-motion-slide-visible-bottom class=" sm:mt-12  w-full font-mono">
             <div $VanillaTilt data-tilt class="blurblur brdr card">
                 <p class="headingTitle">
                     Socials</p>

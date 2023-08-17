@@ -44,7 +44,7 @@ function timePosition(itemId: number) {
             </div>
         </div>
         <div class="flex justify-center min-w-full" v-for="item in data" :key="item.id">
-            <div :class="cardPosition(item.id)" class="flex justify-center w-full">
+            <div v-motion-slide-visible-left :class="cardPosition(item.id)" class="flex justify-center w-full">
                 <div $vanillaTilt data-tilt class="card blurblur brdr">
                     <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
                     <a :href="item.url" target="_blank" rel="noopener noreferrer"

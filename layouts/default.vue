@@ -14,7 +14,7 @@ welcomeScreen();
         <ClientOnly>
             <StarField />
         </ClientOnly>
-        <Welcome class="min-h-full w-full absolute z-50 backdrop-blur-md shadow-md " v-show="showWelcomeScreen" />
+        <Welcome v-show="showWelcomeScreen" />
         <div class="flex flex-col z-20">
             <Header />
             <slot />

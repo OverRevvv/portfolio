@@ -29,7 +29,6 @@
             <section class="blur-0 relative sm:static">
                 <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>
                 <Projects class="mt-10" />
-                <!-- <CoffeeMug class="h-96"/> -->
             </section>
             <section class="blur-0 my-10 justify-center items-center relative sm:static">
                 <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>

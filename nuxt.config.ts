@@ -1,10 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@nuxtjs/tailwindcss", "@tresjs/nuxt"],
-  build: {
-    transpile: ["three", "troisjs"],
-  },
+  modules: ["@nuxtjs/tailwindcss", "@tresjs/nuxt","@vueuse/motion/nuxt"],
   app: {
     head: {
       title: "OverRevvv",

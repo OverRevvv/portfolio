@@ -17,12 +17,12 @@ const data = [
     <div class="font-mono overflow-hidden relative sm:static">
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
-        <div class="earthContainer">
+        <div v-motion-slide-visible-right class="earthContainer">
             <ClientOnly>
                 <Earth />
             </ClientOnly>
         </div>
-        <div class="flex flex-col md:ml-0 lg:ml-32">
+        <div v-motion-slide-visible-left class="flex flex-col md:ml-0 lg:ml-32">
             <div $VanillaTilt data-tilt v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">
                 <div class="text-xl sm:text-2xl pb-2 font-semibold mb-1 text-pink-500">{{ item.heading }}</div>
                 <div class="text-lg text-sky-300 sm:text-xl pb-2 font-normal mb-1">{{ item.college }}</div>
