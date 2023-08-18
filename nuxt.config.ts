@@ -71,17 +71,7 @@ https://sketchfab.com/3d-models/fd3s-ips-racing-time-attack-13da047a4fec4931822b
 https://sketchfab.com/3d-models/kawasaki-ninja-zx10r-2021-2b8c4ecdac4d46f68de1c6e0f27d6e6a
 https://sketchfab.com/3d-models/kawasaki-zx10r-cdf6ae10048544d9b069f89fe5be245d
 
-      link: [
-        {rel: "apple-touch-icon", sizes: "180x180", href:, "/apple-touch-icon.png"},
-        {rel: "icon",, type:"image/png", sizes: "32x32", href:, "/favicon-32x32.png"},
-        {rel: "icon",, type:"image/png", sizes: "16x16", href:, "/favicon-16x16.png"},
-        {rel: "manifest" href: "/site.webmanifest"},
-      ]
-
-
-      link:[
-            { rel: 'icon', href: 'favicon.svg'},
-            { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
-      ],
-
+todo: 3D card hover effect 
+todo: try relative and absolute for both 3D objects
+todo: Optmize overall performance 
 */

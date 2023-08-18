@@ -22,7 +22,7 @@ const data = [
                 <Earth />
             </ClientOnly>
         </div>
-        <div v-motion-slide-visible-left class="flex flex-col md:ml-0 lg:ml-32">
+        <div v-motion-slide-visible-left class="flex sm:w-1/2 flex-col md:ml-0 lg:ml-32">
             <div $VanillaTilt data-tilt v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 blurblur card brdr">
                 <div class="text-xl sm:text-2xl pb-2 font-semibold mb-1 text-pink-500">{{ item.heading }}</div>
                 <div class="text-lg text-sky-300 sm:text-xl pb-2 font-normal mb-1">{{ item.college }}</div>
@@ -37,6 +37,6 @@ const data = [
     @apply bg-[#15103088] text-center block sm:w-96 p-6 m-4 rounded-3xl;
 }
 .earthContainer{
-    @apply absolute mx-auto sm:mx-0 w-11/12 h-full md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
+    @apply absolute mx-auto lg:z-30 sm:mx-0 w-11/12 h-full md:h-[80%] md:w-full md:-bottom-[70%] md:left-0 lg:h-[56em] lg:w-full lg:top-[38rem] lg:left-80;
 }
 </style>
