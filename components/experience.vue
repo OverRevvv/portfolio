@@ -33,7 +33,7 @@ function timePosition(itemId: number) {
 }
 </script>
 <template>
-    <div class="font-mono">
+    <div>
         <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-16">Experience</div>
         <div class="timeline-div">
             <div class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1">
@@ -45,18 +45,20 @@ function timePosition(itemId: number) {
         </div>
         <div class="flex justify-center min-w-full" v-for="item in data" :key="item.id">
             <div v-motion-slide-visible-left :class="cardPosition(item.id)" class="flex justify-center w-full">
-                <div $vanillaTilt data-tilt class="card blurblur brdr">
-                    <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
-                    <a :href="item.url" target="_blank" rel="noopener noreferrer"
-                        class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-300">{{
-                            item.company
-                        }}</a>
-                    <div :class="timePosition(item.id)"
-                        class=" my-2 font-sans text-sm sm:text-base font-bold text-violet-400 pb-1">{{ item.time }}</div>
-                    <ul class="text-sm sm:text-lg font-normal mb-1 list-disc list-inside" v-for="point in item.points"
-                        :key="point">
-                        <li class="py-1">{{ point }}</li>
-                    </ul>
+                <div $vanillaTilt data-tilt class="card brdr">
+                    <div class="inner blurblur">
+                        <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>
+                        <a :href="item.url" target="_blank" rel="noopener noreferrer"
+                            class="text-xl sm:text-2xl font-normal underline underline-offset-2 text-blue-300">{{
+                                item.company
+                            }}</a>
+                        <div :class="timePosition(item.id)"
+                            class=" my-2 font-sans text-sm sm:text-base font-bold text-violet-400 pb-1">{{ item.time }}</div>
+                        <ul class="text-sm sm:text-lg font-normal mb-1 list-disc list-inside" v-for="point in item.points"
+                            :key="point">
+                            <li class="py-1">{{ point }}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,9 +66,17 @@ function timePosition(itemId: number) {
 </template>
 <style scoped >
 .card {
-    @apply bg-[#15103088] text-center block md:p-2 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:p-10 lg:m-4;
+    /* @apply bg-[#15103088] text-center block md:p-2 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:p-10 lg:m-4; */
+    @apply bg-[#15103088] text-center block rounded-3xl text-white mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:m-4;
+    transform-style: preserve-3d;
 }
-
+.inner{
+    @apply w-full pt-6 md:p-2 lg:p-10;
+}
+.inner:hover {
+    transform: translateZ(100px);
+    transform: scale3d(50px);
+}
 .card img {
     width: 10px;
 }

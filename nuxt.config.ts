@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       title: "OverRevvv",
       link:[
             { rel: 'icon',type: 'image/svg+xml', href: 'favicon.svg'},
+            {rel: "preconnect", href:"https://fonts.googleapis.com" },
+            {rel: "preconnect", href:"https://fonts.gstatic.com", crossorigin:"anonymous"},
+            {rel:"stylesheet", href:"https://fonts.googleapis.com/css2?family=Kanit&display=swap"}
             // { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
       ],
       meta: [
@@ -56,22 +59,3 @@ export default defineNuxtConfig({
     }
   },
 })
-/* 
-* Potential Resource
-https://sketchfab.com/3d-models/earths-synthetic-moons-3e510c0b733d4943a1dc1de40d4a1f7b
-https://sketchfab.com/3d-models/earth-orbit-665a96f13ee24657b236a49cb9900061
-https://www.youtube.com/watch?v=0fYi8SGA20k&ab_channel=JavaScriptMastery
-https://danielwebsite.vercel.app/
-https://www.freepik.com/free-photos-vectors/car-rpm/3
-https://www.pinterest.com/pin/1013591459865256822/
-https://www.pinterest.com/pin/16677461112760585/
-https://sketchfab.com/3d-models/submarine-fiber-optic-cable-network-a952ca4b21fd4ad194a261901414b02f
-https://sketchfab.com/3d-models/cybermotors-rx7-te01-test-a4b90a99612c47f596ab05c723795a91
-https://sketchfab.com/3d-models/fd3s-ips-racing-time-attack-13da047a4fec4931822bec39a3209dea
-https://sketchfab.com/3d-models/kawasaki-ninja-zx10r-2021-2b8c4ecdac4d46f68de1c6e0f27d6e6a
-https://sketchfab.com/3d-models/kawasaki-zx10r-cdf6ae10048544d9b069f89fe5be245d
-
-todo: 3D card hover effect 
-todo: try relative and absolute for both 3D objects
-todo: Optmize overall performance 
-*/

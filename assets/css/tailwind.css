@@ -6,6 +6,7 @@ body{
   margin: 0;
   padding: 0;
   user-select: none;
+  font-family: 'Kanit', sans-serif;
 }
 :root {
   color-scheme: dark; /* dark scroll bar :)  */

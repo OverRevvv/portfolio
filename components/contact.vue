@@ -34,7 +34,7 @@ const socials = [
 ]
 </script>
 <template>
-    <div class="font-mono">
+    <div>
         <h3 class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-8 sm:my-24">Contacts
         </h3>
         <div v-motion-slide-visible-bottom class="sm:mt-12 w-full font-mono">
@@ -62,26 +62,28 @@ const socials = [
             </div>
         </div>
         <div v-motion-slide-visible-bottom class=" sm:mt-12  w-full font-mono">
-            <div $VanillaTilt data-tilt class="blurblur brdr card">
-                <p class="headingTitle">
-                    Socials</p>
-                <div class="box" v-for="item in socials" :key="item.name">
-                    <div class="smlbox">
-                        <h1 class="sm:text-2xl text-pink-500">{{ item.name }}</h1>
-                    </div>
-                    <div class="smlbox">
-                        <a :href="item.url"
-                            class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
-                            target="_blank" rel="noopener noreferrer">
-                            <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
-                        </a>
-                    </div>
-                    <div class="smlbox">
-                        <a :href="item.url"
-                            class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
-                            target="_blank" rel="noopener noreferrer">
-                            {{ item.username }}
-                        </a>
+            <div $VanillaTilt data-tilt class="brdr card">
+                <div class="inner blurblur">
+                    <p class="headingTitle">
+                        Socials</p>
+                    <div class="box" v-for="item in socials" :key="item.name">
+                        <div class="smlbox">
+                            <h1 class="sm:text-2xl text-pink-500">{{ item.name }}</h1>
+                        </div>
+                        <div class="smlbox">
+                            <a :href="item.url"
+                                class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
+                                target="_blank" rel="noopener noreferrer">
+                                <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
+                            </a>
+                        </div>
+                        <div class="smlbox">
+                            <a :href="item.url"
+                                class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
+                                target="_blank" rel="noopener noreferrer">
+                                {{ item.username }}
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,9 +92,17 @@ const socials = [
 </template>
 <style scoped>
 .card {
-    @apply my-4 sm:my-0 sm:p-8 lg:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl md:w-11/12;
+    @apply my-4 sm:my-0 lg:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl md:w-11/12;
+    transform-style: preserve-3d;
+}
+.inner {
+    @apply w-full sm:p-8;
 }
 
+.inner:hover {
+    transform: translateZ(80px);
+    transform: scale3d(50px);
+}
 .headingTitle {
     @apply sm:text-[18px] text-[14px] text-center text-violet-500 uppercase tracking-wider font-sans font-bold sm:m-0 mt-4;
 }
@@ -111,14 +121,6 @@ form ::placeholder {
 
 input {
     text-align: center;
-}
-
-th {
-    @apply text-center;
-}
-
-td {
-    @apply text-center;
 }
 
 .box {
