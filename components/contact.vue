@@ -35,9 +35,9 @@ const socials = [
 </script>
 <template>
     <div>
-        <h3 class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-8 sm:my-24">Contacts
+        <h3 v-motion-slide-visible-top class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-8 sm:my-24">Contacts
         </h3>
-        <div v-motion-slide-visible-bottom class="sm:mt-12 w-full font-mono">
+        <div v-motion-slide-visible-bottom class="sm:mt-12 w-full">
             <div $VanillaTilt data-tilt class="card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>

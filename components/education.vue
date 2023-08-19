@@ -15,7 +15,7 @@ const data = [
 
 <template>
     <div class="overflow-hidden relative sm:static">
-        <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
+        <div v-motion-slide-visible-bottom class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
         <div v-motion-slide-visible-right class="earthContainer">
             <ClientOnly>

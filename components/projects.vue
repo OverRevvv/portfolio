@@ -17,10 +17,10 @@ const data = [
 ]
 </script>
 <template>
-    <div class="font-mono">
-        <div class="text-center text-4xl sm:text-6xl text-teal-300 font-medium my-16">Projects</div>
+    <div>
+        <div v-motion-slide-visible-bottom class="text-center text-4xl sm:text-6xl text-teal-300 font-medium my-16">Projects</div>
         <div v-motion-slide-visible-top class="mt-10 sm:flex">
-            <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr  project-card">
+            <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr font-mono project-card">
                 <div class="inner blurblur">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
                         <img src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto hover:scale-125" />

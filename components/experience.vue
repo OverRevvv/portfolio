@@ -34,7 +34,7 @@ function timePosition(itemId: number) {
 </script>
 <template>
     <div>
-        <div class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-16">Experience</div>
+        <div v-motion-slide-visible-bottom class="text-4xl sm:text-6xl text-center text-teal-300 font-medium my-16">Experience</div>
         <div class="timeline-div">
             <div class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1">
                 <img src="/images/experience/gc.svg" alt="Arcade">
@@ -82,7 +82,7 @@ function timePosition(itemId: number) {
 }
 
 .timeline-div {
-    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[60rem] lg:flex flex-col justify-start items-center mt-0 absolute left-1/2 transform -translate-x-1/2 hidden md:hidden;
+    @apply z-10 w-1 bg-[#17132b] sm:mx-auto sm:h-[57rem] lg:flex flex-col justify-start items-center mt-0 absolute left-1/2 transform -translate-x-1/2 hidden md:hidden;
 }
 
 .cardPRight {
@@ -94,7 +94,7 @@ function timePosition(itemId: number) {
 }
 
 .timePLeft {
-    @apply sm:transform md:-translate-x-0 lg:-translate-x-[31rem] lg:text-lg lg:translate-y-[2rem];
+    @apply sm:transform md:-translate-x-0 lg:-translate-x-[31rem] lg:text-lg lg:translate-y-[5.2rem];
 }
 
 .timePRight {
