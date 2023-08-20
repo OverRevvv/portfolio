@@ -28,6 +28,14 @@ body{
   background-image: linear-gradient(180deg, #6665cd 0%, #af1db7 74%);
   border-radius: 10px;
 }
+
+.heading{
+  @apply text-center text-4xl sm:text-6xl text-teal-300 font-medium;
+}
+.card-color{
+  @apply bg-[#15103048];
+}
+
 .blurblur{
   @apply shadow-transparent;
   --tw-backdrop-blur: blur(1px);

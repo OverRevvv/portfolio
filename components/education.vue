@@ -15,7 +15,7 @@ const data = [
 
 <template>
     <div class="overflow-hidden relative sm:static">
-        <div v-motion-slide-visible-bottom class="text-4xl sm:text-6xl text-center text-teal-300 font-medium mb-8">Education</div>
+        <div v-motion-slide-visible-bottom class="heading mb-8">Education</div>
         <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
         <div v-motion-slide-visible-right class="earthContainer">
             <ClientOnly>
@@ -23,7 +23,7 @@ const data = [
             </ClientOnly>
         </div>
         <div v-motion-slide-visible-left class="flex sm:w-1/2 flex-col md:ml-0 lg:ml-32">
-            <div $VanillaTilt data-tilt v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 card brdr">
+            <div $VanillaTilt data-tilt v-for="(item, index) in data" :key="item.heading" class="sm:mt-4 card card-color brdr">
                 <div class="inner blurblur">
                     <div class="text-xl sm:text-2xl pb-2 font-semibold mb-1 text-pink-500">{{ item.heading }}</div>
                     <div class="text-lg text-sky-300 sm:text-xl pb-2 font-normal mb-1">{{ item.college }}</div>

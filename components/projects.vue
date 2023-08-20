@@ -18,16 +18,16 @@ const data = [
 </script>
 <template>
     <div>
-        <div v-motion-slide-visible-bottom class="text-center text-4xl sm:text-6xl text-teal-300 font-medium my-16">Projects</div>
+        <div v-motion-slide-visible-bottom class="heading my-16">Projects</div>
         <div v-motion-slide-visible-top class="mt-10 sm:flex">
-            <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr font-mono project-card">
+            <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr font-mono card-color project-card">
                 <div class="inner blurblur">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
                         <img src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto hover:scale-125" />
                     </a>
                     <a :href="item.url" target="_blank" rel="noopener noreferrer">
                         <div class="block pt-4 ">
-                            <img class="m-auto" :src="item.Image" :alt=item.name>
+                            <img class="m-auto rounded-2xl" :src="item.Image" :alt=item.name>
                         </div>
                     </a>
                     <div class="text-xl sm:text-2xl font-semibold font-mono text-pink-500">{{ item.name }}</div>
@@ -36,7 +36,7 @@ const data = [
                 </div>
             </div>
         </div>
-        <div class="text-lg sm:text-xl p-4 text-center text-gray-200 mt-4">Checkout
+        <div class="text-lg sm:text-xl p-4 text-center font-medium text-gray-200 mt-4">Checkout
             <a href="https://github.com/OverRevvv" target="_blank" rel="noopener noreferrer"
                 class="text-lg sm:text-xl font-normal underline underline-offset-2 text-blue-200">
                 Github</a> for more.
