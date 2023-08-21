@@ -66,8 +66,7 @@ function timePosition(itemId: number) {
 </template>
 <style scoped >
 .card {
-    /* @apply bg-[#15103088] text-center block md:p-2 rounded-3xl text-white pt-6 mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:p-10 lg:m-4; */
-    @apply bg-[#15103088] text-center block rounded-3xl text-white mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:m-4;
+    @apply text-center block rounded-3xl text-white mt-4 h-auto w-11/12 md:w-1/2 lg:w-[36%] lg:m-4;
     transform-style: preserve-3d;
 }
 .inner{

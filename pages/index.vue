@@ -1,3 +1,13 @@
+<script setup lang="ts">
+//grabbing cursor effect for 3D model
+const isPressed = ref(false);
+const handleMouseDown = ()=>{
+    isPressed.value = true;
+}
+const handleMouseUp = ()=>{
+    isPressed.value = false;
+}
+</script>
 <template>
     <div class="flex flex-col justify-center items-center w-full">
         <div class="w-full 2xl:max-w-screen-lg sm:px-6 px-2">
@@ -9,7 +19,10 @@
                 <div class="mouseOuter">
                     <div class="mouseBtn" />
                 </div>
-                <div class="absolute z-30 h-72 top-[26rem] w-full md:top-52 md:h-1/2 md:right-0  lg:h-full lg:top-12 lg:right-24">
+                <div @mousedown="handleMouseDown"
+         @mouseup="handleMouseUp"
+         :class="isPressed? 'cursor-grabbing': 'cursor-grab'"
+                 class="absolute z-30 h-72 top-[26rem] w-full md:top-52 md:h-1/2 md:right-0  lg:h-full lg:top-12 lg:right-24">
                     <ClientOnly>
                         <Pc />
                     </ClientOnly>

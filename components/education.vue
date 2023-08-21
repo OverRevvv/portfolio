@@ -11,13 +11,26 @@ const data = [
         time: '2021 - present',
     }
 ]
+
+//grabbing cursor effect for 3D model
+const isPressed = ref(false);
+const handleMouseDown = ()=>{
+    isPressed.value = true;
+}
+const handleMouseUp = ()=>{
+    isPressed.value = false;
+}
+
 </script>
 
 <template>
     <div class="overflow-hidden relative sm:static">
         <div v-motion-slide-visible-bottom class="heading mb-8">Education</div>
-        <!-- <Horse class=" absolute sm:ml-[100vh] mt-20" /> -->
-        <div v-motion-slide-visible-right class="earthContainer">
+        <div v-motion-slide-visible-right
+         @mousedown="handleMouseDown"
+         @mouseup="handleMouseUp"
+         :class="isPressed? 'cursor-grabbing': 'cursor-grab'"
+          class="earthContainer">
             <ClientOnly>
                 <Earth />
             </ClientOnly>
@@ -36,7 +49,7 @@ const data = [
 
 <style scoped>
 .card {
-    @apply bg-[#15103088] text-center block sm:w-96 m-4 rounded-3xl;
+    @apply text-center block sm:w-96 m-4 rounded-3xl;
     transform-style: preserve-3d;
 }
 .inner{

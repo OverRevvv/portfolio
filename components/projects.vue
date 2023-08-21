@@ -46,7 +46,7 @@ const data = [
 
 <style scoped >
 .project-card {
-    @apply bg-[#15103088] text-center block sm:w-1/2 m-4 rounded-3xl;
+    @apply text-center block sm:w-1/2 m-4 rounded-3xl;
     transform-style: preserve-3d;
 }
 

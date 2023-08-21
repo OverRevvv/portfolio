@@ -7,6 +7,10 @@
             <br />
             <span class="text-violet-500">Open Source Contributer</span>
         </div>
+    <!-- <a href="https://wakatime.com/@2bd5d4a8-0ada-426e-b2f9-68f97572c4db">
+        <img src="https://wakatime.com/badge/user/2bd5d4a8-0ada-426e-b2f9-68f97572c4db.svg" 
+        alt="Total time coded since Mar 15 2023" />
+    </a> -->
     </div>
 </template>
 <style scoped>

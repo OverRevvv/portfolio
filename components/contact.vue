@@ -38,7 +38,7 @@ const socials = [
         <h3 v-motion-slide-visible-top class="heading my-8 sm:my-24">Contacts
         </h3>
         <div v-motion-slide-visible-bottom class="sm:mt-12 w-full">
-            <div $VanillaTilt data-tilt class="card blurblur brdr">
+            <div class="bg-[#15103088] card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>
                 <form action="" class="mt-12 flex flex-col gap-8">
@@ -74,12 +74,12 @@ const socials = [
                             <a :href="item.url"
                                 class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
                                 target="_blank" rel="noopener noreferrer">
-                                <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto " alt="icon">
+                                <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto hover:border-b-2 hover:border-sky-300" alt="icon">
                             </a>
                         </div>
                         <div class="smlbox">
                             <a :href="item.url"
-                                class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
+                                class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center hover:decoration-pink-500"
                                 target="_blank" rel="noopener noreferrer">
                                 {{ item.username }}
                             </a>
@@ -92,7 +92,7 @@ const socials = [
 </template>
 <style scoped>
 .card {
-    @apply my-4 sm:my-0 lg:w-3/5 mx-auto bg-[#15103088] text-center rounded-2xl md:w-11/12;
+    @apply my-4 sm:my-0 lg:w-3/5 mx-auto text-center rounded-2xl md:w-11/12;
     transform-style: preserve-3d;
 }
 .inner {

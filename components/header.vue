@@ -5,12 +5,12 @@
             <div class="flex justify-between items-center py-3 ">
                     <img src="/images/logo.svg" alt="logo" class="absolute h-10  sm:h-12 sm:mr-52 md:ml-12 lg:ml-20">
                     <div class="h-8 sm:mr-52 md:mr-60 lg:ml-20"/>
-                <ul class="flex absolute right-0">
+                <ul class="flex absolute right-0 mr-4">
                     <li v-for="item in headerItems" :key="item.name">
-                        <a :href="item.url" class="flex items-center justify-center" target="_blank"
+                        <a :href="item.url" class="flex mr-2 items-center justify-center hover:bg-gradient-to-r from-[#05abcd] via-[#6665cd] to-[#af1db7] rounded-full" target="_blank"
                             rel="noopener noreferrer">
                             <img :src="item.icon"
-                                class="max-h-10 w-auto mr-4" alt="icon" />
+                                class="max-h-10 w-auto" alt="icon" />
                         </a>
                     </li>
                 </ul>
