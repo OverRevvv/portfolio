@@ -23,11 +23,11 @@ const data = [
             <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr font-mono card-color project-card">
                 <div class="inner blurblur">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">
-                        <img src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto hover:scale-125" />
+                        <img loading="lazy" src="/images/socials/github.png" alt="code" class="max-h-10 w-auto mx-auto hover:scale-125" />
                     </a>
                     <a :href="item.url" target="_blank" rel="noopener noreferrer">
                         <div class="block pt-4 ">
-                            <img class="m-auto rounded-2xl" :src="item.Image" :alt=item.name>
+                            <img loading="lazy" class="m-auto rounded-2xl" :src="item.Image" :alt=item.name>
                         </div>
                     </a>
                     <div class="text-xl sm:text-2xl font-semibold font-mono text-pink-500">{{ item.name }}</div>

@@ -62,7 +62,7 @@ onUnmounted(() => {
         </div>
         <div class="relative">
         <div class="absolute md:static lg:absolute inset-0 bg-gradient-to-r blur-sm from-[#05abcd] via-[#6665cd] to-[#af1db7] z-10 rounded-full h-52 w-52 md:h-64 md:w-64"/>
-        <img src="/images/pfp.jpg" alt="pfp" class="pfp relative md:-translate-y-64 lg:translate-y-0" />
+        <img loading="lazy" src="/images/pfp.jpg" alt="pfp" class="pfp relative md:-translate-y-64 lg:translate-y-0" />
         </div>
     </div>
 </template>

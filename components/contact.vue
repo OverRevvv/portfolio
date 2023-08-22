@@ -74,7 +74,7 @@ const socials = [
                             <a :href="item.url"
                                 class=" underline-offset-4 decoration-2 underline flex items-center sm:text-xl text-sky-300 justify-center"
                                 target="_blank" rel="noopener noreferrer">
-                                <img :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto hover:border-b-2 hover:border-sky-300" alt="icon">
+                                <img loading="lazy" :src="item.icon" class="h-8 sm:max-h-10 w-auto mx-auto hover:border-b-2 hover:border-sky-300" alt="icon">
                             </a>
                         </div>
                         <div class="smlbox">

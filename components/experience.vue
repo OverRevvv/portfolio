@@ -37,10 +37,10 @@ function timePosition(itemId: number) {
         <div v-motion-slide-visible-bottom class="heading my-16">Experience</div>
         <div class="timeline-div">
             <div class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1">
-                <img src="/images/experience/gc.svg" alt="Arcade">
+                <img loading="lazy" src="/images/experience/gc.svg" alt="Arcade">
             </div>
             <div class="w-10 h-10 rounded-full translate-y-[40rem] border-4 bg-[#17132b] border-[#17132b] p-1">
-                <img src="/images/experience/gc2.svg" alt="GoogleCloud">
+                <img loading="lazy" src="/images/experience/gc2.svg" alt="GoogleCloud">
             </div>
         </div>
         <div class="flex justify-center min-w-full" v-for="item in data" :key="item.id">

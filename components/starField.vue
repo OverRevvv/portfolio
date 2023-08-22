@@ -19,7 +19,7 @@ onLoop(({ delta }) => {
       cameraRef.value.position.z = -progress.value * 2 + 6
     } else {
       const t = (progress.value - 0.1) * 4 
-      cameraRef.value.position.x = lerp(-0.1, 1, t * t)
+      cameraRef.value.position.y = lerp(-0.1, 1, t * t)
     }
   }
   if (starRef.value) {
