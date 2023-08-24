@@ -14,21 +14,21 @@ const handleMouseUp = ()=>{
             <section class="mt-6 blur-0">
                 <intro />
             </section>
-            <section class="flex justify-between items-center flex-col sm:flex-row sm:mt-10">
+            <section class="relative flex justify-between items-center flex-col sm:flex-row sm:mt-10">
                 <div class="absolute bottom-64 z-40 w-full h-28 block sm:hidden blur-0"/>
                 <div class="mouseOuter">
                     <div class="mouseBtn" />
                 </div>
-                <div @mousedown="handleMouseDown"
-         @mouseup="handleMouseUp"
-         :class="isPressed? 'cursor-grabbing': 'cursor-grab'"
-                 class="absolute z-30 h-72 top-[26rem] w-full md:top-52 md:h-1/2 md:right-0  lg:h-full lg:top-12 lg:right-24">
+                <div @mousedown="handleMouseDown" @mouseup="handleMouseUp"
+                     :class="isPressed? 'cursor-grabbing': 'cursor-grab'"
+                    class="absolute z-30 h-72 top-0 w-full md:top-[-28rem] md:h-[200%] lg:h-[250%] lg:-top-96 lg:right-24"
+                    >
                     <ClientOnly>
                         <Pc />
                     </ClientOnly>
                 </div>
                 <div class="h-72 blur-0 sm:blur-none"/>
-                <div class="absolute -bottom-52 w-full h-72 block sm:hidden blur-0"/>
+                <div class="absolute -bottom-48 w-full h-72 block sm:hidden blur-0"/>
                 <WorkIntro/>
             </section>
             <section class="flex relative sm:static justify-between sm:items-center flex-col sm:flex-row mt-6 max-w-full">

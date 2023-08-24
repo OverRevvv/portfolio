@@ -37,7 +37,7 @@ welcomeScreen();
  }
  .slide-leave-active{
     /* transition: all .5s; */
-    transition: transform .5s;
+    transition: transform .2s;
 
  }
 </style>
