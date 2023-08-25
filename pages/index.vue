@@ -9,7 +9,7 @@ const handleMouseUp = ()=>{
 }
 </script>
 <template>
-    <div class="flex flex-col justify-center items-center w-full">
+    <div class="flex flex-col justify-center items-center w-full overflow-hidden">
         <div class="w-full 2xl:max-w-screen-lg sm:px-6 px-2">
             <section class="mt-6 blur-0">
                 <intro />

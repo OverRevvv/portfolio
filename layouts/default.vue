@@ -36,7 +36,6 @@ welcomeScreen();
     transform: translateY(-100%);
  }
  .slide-leave-active{
-    /* transition: all .5s; */
     transition: transform .2s;
 
  }
