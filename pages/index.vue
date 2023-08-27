@@ -24,7 +24,7 @@ const handleMouseUp = ()=>{
                     class="absolute z-30 h-72 top-0 w-full md:top-[-28rem] md:h-[200%] lg:h-[250%] lg:-top-96 lg:right-24"
                     >
                     <ClientOnly>
-                        <Pc />
+                        <LazyPc />
                     </ClientOnly>
                 </div>
                 <div class="h-72 blur-0 sm:blur-none"/>
@@ -34,19 +34,19 @@ const handleMouseUp = ()=>{
             <section class="flex relative sm:static justify-between sm:items-center flex-col sm:flex-row mt-6 max-w-full">
                 <div class="absolute mx-auto top-10 w-full h-52 block sm:hidden blur-0"/>
                 <div class="absolute mx-auto -bottom-20 w-full h-56 block sm:hidden blur-0"/>
-                <Education class="mt-20 min-w-full" />
+                <LazyEducation class="mt-20 min-w-full" />
             </section>
             <section class="blur-0">
-                <Experience class="mt-10" />
+                <LazyExperience class="mt-10" />
             </section>
             <section class="blur-0 relative sm:static">
                 <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>
-                <Projects class="mt-10" />
+                <LazyProjects class="mt-10" />
             </section>
             <section class="blur-0 my-10 justify-center items-center relative sm:static">
                 <div class="absolute mx-auto -top-20 w-full h-40 block sm:hidden blur-0"/>
                 <div class="absolute mx-auto -bottom-12 w-full h-40 block sm:hidden blur-0"/>
-                <Contact />
+                <LazyContact />
             </section>
         </div>
     </div>
