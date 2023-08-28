@@ -32,7 +32,7 @@ const handleMouseUp = ()=>{
          :class="isPressed? 'cursor-grabbing': 'cursor-grab'"
           class="earthContainer">
             <ClientOnly>
-                <Earth />
+                <LazyEarth />
             </ClientOnly>
         </div>
         <div v-motion-slide-visible-left class="flex sm:w-1/2 flex-col md:ml-0 lg:ml-32">

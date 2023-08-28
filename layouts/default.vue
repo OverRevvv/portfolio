@@ -20,7 +20,7 @@ welcomeScreen();
         <div class="flex flex-col z-20">
             <Header />
             <slot />
-            <Footer class="mt-auto" />
+            <LazyFooter class="mt-auto" />
         </div>
     </div>
 </template>

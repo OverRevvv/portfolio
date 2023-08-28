@@ -8,7 +8,7 @@ const { hasFinishLoading, progress, items } = await useProgress()
       <span class="loader">{{ progress }} %</span>
     </div>
   </Transition>
-  <TresCanvas shadows alpha>
+  <TresCanvas alpha>
     <TresPerspectiveCamera :position="[0, -4, 14]" />
     <OrbitControls :enableZoom="false" :enableDamping="true" :maxPolarAngle="Math.PI / 2" :minPolarAngle="Math.PI / 2" />
     <TresAmbientLight :intensity="7" />
