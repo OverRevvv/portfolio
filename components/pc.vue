@@ -1,5 +1,5 @@
 <script setup>
-const { hasFinishLoading, progress, items } = await useProgress()
+const { hasFinishLoading, progress } = await useProgress()
 </script>
 
 <template>
@@ -8,7 +8,7 @@ const { hasFinishLoading, progress, items } = await useProgress()
       <span class="loader">{{ progress }} %</span>
     </div>
   </Transition>
-  <TresCanvas alpha>
+  <TresCanvas shadows alpha>
     <TresPerspectiveCamera :position="[0, -4, 14]" />
     <OrbitControls :enableZoom="false" :enableDamping="true" :maxPolarAngle="Math.PI / 2" :minPolarAngle="Math.PI / 2" />
     <TresAmbientLight :intensity="7" />
