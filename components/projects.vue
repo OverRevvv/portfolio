@@ -9,7 +9,7 @@ const data = [
     },
     {
         name: 'Shopping App',
-        url: 'https://shoekart-31xv.onrender.com/',
+        url: 'https://shoekart.vercel.app/',
         code: 'https://github.com/OverRevvv/ShoppingApp',
         Image: '/images/projects/cart.gif',
         description: 'A basic Full-Stack app using MEVN Tech-Stack'
