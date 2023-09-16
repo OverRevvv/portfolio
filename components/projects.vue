@@ -18,8 +18,8 @@ const data = [
 </script>
 <template>
     <div>
-        <div v-motion-slide-visible-bottom class="heading my-16">Projects</div>
-        <div v-motion-slide-visible-top class="mt-10 sm:flex">
+        <div  class="heading my-16">Projects</div>
+        <div  class="mt-10 sm:flex">
             <div $VanillaTilt data-tilt v-for="item in data" :key="item.url" class="brdr font-mono card-color project-card">
                 <div class="inner blurblur">
                     <a :href="item.code" target="_blank" rel="noopener noreferrer">

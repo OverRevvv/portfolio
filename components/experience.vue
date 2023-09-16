@@ -34,7 +34,7 @@ function timePosition(itemId: number) {
 </script>
 <template>
     <div>
-        <div v-motion-slide-visible-bottom class="heading my-16">Experience</div>
+        <div class="heading my-16">Experience</div>
         <div class="timeline-div">
             <div class="w-10 h-10  rounded-full translate-y-52 border-4 bg-[#17132b] border-[#17132b] p-1">
                 <img loading="lazy" src="/images/experience/gc.svg" alt="Arcade">
@@ -44,7 +44,7 @@ function timePosition(itemId: number) {
             </div>
         </div>
         <div class="flex justify-center min-w-full" v-for="item in data" :key="item.id">
-            <div v-motion-slide-visible-left :class="cardPosition(item.id)" class="flex justify-center w-full">
+            <div :class="cardPosition(item.id)" class="flex justify-center w-full">
                 <div $vanillaTilt data-tilt class="card card-color brdr">
                     <div class="inner blurblur">
                         <div class="text-2xl font-semibold mb-1 sm:text-3xl text-pink-400">{{ item.position }}</div>

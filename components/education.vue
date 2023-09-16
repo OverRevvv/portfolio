@@ -25,8 +25,8 @@ const handleMouseUp = ()=>{
 
 <template>
     <div class="overflow-hidden relative sm:static">
-        <div v-motion-slide-visible-bottom class="heading mb-8">Education</div>
-        <div v-motion-slide-visible-right
+        <div  class="heading mb-8">Education</div>
+        <div 
          @mousedown="handleMouseDown"
          @mouseup="handleMouseUp"
          :class="isPressed? 'cursor-grabbing': 'cursor-grab'"

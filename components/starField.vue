@@ -23,11 +23,9 @@ onLoop(({ delta }) => {
   }
   if (starRef.value) {
     // @ts-ignore
-    starRef.value.value.rotation.y += delta * 0.01
+    starRef.value.value.rotation.y += delta * 0.06
     // @ts-ignore
-    starRef.value.value.rotation.x += delta * 0.02
-    // @ts-ignore
-    // starRef.value.value.rotation.z += delta * 0.02
+    starRef.value.value.rotation.x += delta * 0.07
   }
 })
 
