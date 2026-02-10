@@ -18,6 +18,8 @@
     "@tresjs/cientos": "^2.3.0",
     "@tresjs/nuxt": "^1.0.1",
     "@vueuse/motion": "^2.0.0",
+    "gsap": "^3.12.5",
+    "nuxt3-lenis": "^1.5.9",
     "three": "^0.154.0",
     "vanilla-tilt": "^1.8.0"
   }

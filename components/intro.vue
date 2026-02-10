@@ -1,10 +1,27 @@
-<script setup>
+<script lang="ts" setup>
 // Create reactive refs for viewport width and height
+const { $gsap: gsap, $scrollTrigger } = useNuxtApp();
 const viewportWidth = ref(0);
 const viewportHeight = ref(0);
 
+const words = ref(["Arnav", "OverRevvv"]);
+const main = ref();
+let ctx: Object;
 const TxtSize = ref(50);
 const Gap = ref(null);
+
+
+onMounted(() => {
+    //@ts-ignore
+    ctx = gsap.context(() => {
+    }, main.value); // <- Scope!
+});
+
+onUnmounted(() => {
+    //@ts-ignore
+    ctx.revert(); 
+});
+
 
 // Update viewport dimensions on window resize
 const handleResize = () => {
@@ -40,7 +57,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="container">
+    <div class="container overflow-x-hidden" ref="main">
         <div class="content-box">
             <div class="mb-2">
                 <div class="text-4xl md:mb-64 lg:mb-0 sm:ml-12 sm:text-5xl">
