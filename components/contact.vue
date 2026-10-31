@@ -35,9 +35,9 @@ const socials = [
 </script>
 <template>
     <div>
-        <h3  class="heading my-8 sm:my-24">Contacts
+        <h3 v-motion-slide-visible-top class="heading my-8 sm:my-24">Contacts
         </h3>
-        <div  class="sm:mt-12 w-full">
+        <div v-motion-slide-visible-bottom class="sm:mt-12 w-full">
             <div class="bg-[#15103088] card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>
@@ -61,7 +61,7 @@ const socials = [
                 </form>
             </div>
         </div>
-        <div class=" sm:mt-12  w-full font-mono">
+        <div v-motion-slide-visible-bottom class=" sm:mt-12  w-full font-mono">
             <div $VanillaTilt data-tilt class="brdr card-color card">
                 <div class="inner blurblur">
                     <p class="headingTitle">

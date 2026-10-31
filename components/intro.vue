@@ -1,37 +1,81 @@
 <script lang="ts" setup>
-// Local typewriter (replaces third-party readme-typing-svg)
-const words = ["Arnav", "OverRevvv"];
-const text = ref("");
-let timer: ReturnType<typeof setTimeout> | undefined;
-let w = 0, i = 0, deleting = false;
+// Create reactive refs for viewport width and height
+const { $gsap: gsap, $scrollTrigger } = useNuxtApp();
+const viewportWidth = ref(0);
+const viewportHeight = ref(0);
 
-function tick() {
-    const word = words[w];
-    text.value = word.slice(0, i);
-    let delay = deleting ? 70 : 120;
-    if (!deleting && i === word.length) { deleting = true; delay = 1500; }
-    else if (deleting && i === 0) { deleting = false; w = (w + 1) % words.length; delay = 400; }
-    else i += deleting ? -1 : 1;
-    timer = setTimeout(tick, delay);
-}
+const words = ref(["Arnav", "OverRevvv"]);
+const main = ref();
+let ctx: Object;
+const TxtSize = ref(50);
+const Gap = ref(null);
+
 
 onMounted(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { text.value = words[0]; return; }
-    tick();
+    //@ts-ignore
+    ctx = gsap.context(() => {
+    }, main.value); // <- Scope!
 });
-onUnmounted(() => clearTimeout(timer));
+
+onUnmounted(() => {
+    //@ts-ignore
+    ctx.revert(); 
+});
+
+
+// Update viewport dimensions on window resize
+const handleResize = () => {
+  viewportWidth.value = window.innerWidth;
+  viewportHeight.value = window.innerHeight;
+};
+
+
+// Add event listener on component mount and remove on component unmount
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    viewportWidth.value = window.innerWidth;
+    viewportHeight.value = window.innerHeight;
+    window.addEventListener('resize', handleResize);
+  }
+});
+
+watchEffect(() => {
+  if (viewportWidth.value < 500) {
+    TxtSize.value = 30;
+    Gap.value = "";
+  } else {
+    TxtSize.value = 50;
+    Gap.value = "```";
+  }
+});
+
+onUnmounted(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', handleResize);
+  }
+});
 </script>
 
 <template>
-    <div class="container">
+    <div class="container overflow-x-hidden" ref="main">
         <div class="content-box">
             <div class="mb-2">
                 <div class="text-4xl md:mb-64 lg:mb-0 sm:ml-12 sm:text-5xl">
                     Hello,I am 
-                    <span class="typed text-fuchsia-600 inline-block min-w-[9ch]">{{ text }}</span>
+                    <a href="https://git.io/typing-svg">
+                        <img
+                        class="inline-block"
+                        :src="`https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=${TxtSize}&duration=3000&pause=1000&color=C026D3&center=true&vCenter=true&width=260&lines=Arnav${Gap};OverRevvv`"
+                        alt="Typing SVG"
+                        />
+                    </a>
                 </div>
             </div>
-            
+            <div class="text-1xl sm:text-1xl sm:ml-12 opacity-0">
+                <span class="text-blue-700">ViewPort Width: {{ viewportWidth }}px</span>
+                <br />
+                <span class="text-indigo-600">ViewPort Height: {{ viewportHeight }}px</span>
+            </div>
         </div>
         <div class="relative">
         <div class="absolute md:static lg:absolute inset-0 bg-gradient-to-r blur-sm from-[#05abcd] via-[#6665cd] to-[#af1db7] z-10 rounded-full h-52 w-52 md:h-64 md:w-64"/>
@@ -41,9 +85,6 @@ onUnmounted(() => clearTimeout(timer));
 </template>
 
 <style scoped>
-.typed::after { content: "|"; margin-left: 2px; animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-
 .container {
     @apply z-10 flex items-center justify-between sm:flex-row flex-col-reverse font-mono;
 }

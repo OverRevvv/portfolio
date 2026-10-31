@@ -1,11 +1,11 @@
 <template>
-  <TresCanvas alpha clear-color="#000000" :clear-alpha="0">
+  <TresCanvas alpha>
     <TresPerspectiveCamera :position="[0, 0, 4]" />
     <OrbitControls :enableZoom="false" :enableDamping="true" :autoRotate="true" :autoRotateSpeed="6" :maxPolarAngle="Math.PI / 2" :minPolarAngle="Math.PI / 2" />
-    <TresAmbientLight :intensity="1.5" />
+    <TresAmbientLight :intensity="50" />
     <Suspense>
-      <GLTFModel path="/planet/scene.glb" :scale="1.3" />
+      <GLTFModel path="/planet/scene.gltf" :scale="1.3" darco="true" />
     </Suspense>
-    <TresDirectionalLight :position="[0, 0, 10]" :intensity="2" cast-shadow />
+    <TresDirectionalLight :position="[0, 0, 10]" :intensity="60" cast-shadow />
   </TresCanvas>
 </template>
