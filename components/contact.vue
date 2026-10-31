@@ -1,5 +1,35 @@
 <script lang="ts" setup>
-let loading: any;
+// Web3Forms access keys are public by design (they only allow sending to your own inbox)
+const ACCESS_KEY = "b42c576f-9eb4-4a36-94ce-bf03dd4ef7b4";
+const loading = ref(false);
+
+async function onSubmit(e: Event) {
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    // Honeypot: real users never fill this hidden field
+    if (formData.get("botcheck")) return;
+    formData.append("access_key", ACCESS_KEY);
+    formData.append("subject", "New message from portfolio");
+
+    loading.value = true;
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData,
+        });
+        const data = await response.json();
+        if (response.ok && data.success) {
+            alert("Success! Your message has been sent.");
+            form.reset();
+        } else {
+            alert("Error: " + (data.message || "Could not send your message."));
+        }
+    } catch (error) {
+        alert("Something went wrong. Please try again.");
+    } finally {
+        loading.value = false;
+    }
+}
 const socials = [
     {
         name: 'Email',
@@ -41,21 +71,22 @@ const socials = [
             <div class="bg-[#15103088] card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>
-                <form action="" class="mt-12 flex flex-col gap-8">
+                <form @submit.prevent="onSubmit" class="mt-12 flex flex-col gap-8">
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your Name</span>
-                        <input type='text' name='name' placeholder="What's your good name?" class="inputBox" />
+                        <input type='text' name='name' required placeholder="What's your good name?" class="inputBox" />
                     </label>
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your email</span>
-                        <input type='email' name='email' placeholder="What's your web address?" class="inputBox" />
+                        <input type='email' name='email' required placeholder="What's your web address?" class="inputBox" />
                     </label>
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your Message</span>
-                        <textarea rows={7} name='message' placeholder='What you want to say?' class="inputBox" />
+                        <textarea rows={7} name='message' required placeholder='What you want to say?' class="inputBox" />
                     </label>
 
-                    <button type='submit' class="btn">
+                    <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" style="display: none" />
+                    <button type='submit' class="btn" :disabled="loading">
                         {{ loading ? "Sending..." : "Send" }}
                     </button>
                 </form>

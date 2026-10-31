@@ -10,7 +10,7 @@ export default defineNuxtConfig({
           "Referrer-Policy": "strict-origin-when-cross-origin",
           "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
           "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
-          "Content-Security-Policy": "default-src 'self'; img-src 'self' data: blob: https://readme-typing-svg.demolab.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; worker-src 'self' blob:; connect-src 'self' blob: data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+          "Content-Security-Policy": "default-src 'self'; img-src 'self' data: blob: https://readme-typing-svg.demolab.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; worker-src 'self' blob:; connect-src 'self' blob: data: https://api.web3forms.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://api.web3forms.com",
         },
       },
     },
