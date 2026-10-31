@@ -1,15 +1,30 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
+  css: ["@fontsource/kanit/400.css"],
+  nitro: {
+    routeRules: {
+      "/**": {
+        headers: {
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+          "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+          "Content-Security-Policy": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; worker-src 'self' blob:; connect-src 'self' blob: data:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'",
+        },
+      },
+      "/pc/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
+      "/planet/**": { headers: { "Cache-Control": "public, max-age=31536000, immutable" } },
+      "/images/**": { headers: { "Cache-Control": "public, max-age=2592000" } },
+    },
+  },
   modules: ["@nuxtjs/tailwindcss", "@tresjs/nuxt","@vueuse/motion/nuxt"],
   app: {
     head: {
       title: "OverRevvv",
       link:[
             { rel: 'icon',type: 'image/svg+xml', href: 'favicon.svg'},
-            {rel: "preconnect", href:"https://fonts.googleapis.com" },
-            {rel: "preconnect", href:"https://fonts.gstatic.com", crossorigin:"anonymous"},
-            {rel:"stylesheet", href:"https://fonts.googleapis.com/css2?family=Kanit&display=swap"}
             // { rel: 'icon', type: 'image/svg+xml', href: 'favicon2.svg'},
       ],
       meta: [
@@ -34,7 +49,7 @@ export default defineNuxtConfig({
         },
         {
           property: "og:image",
-          content: "https://overrevvv.vercel.app/images/hot.jpg",
+          content: "https://overrevvv.vercel.app/images/pfp.jpg",
         },
         //Twitter
         { property: "twitter:url", content: "https://overrevvv.vercel.app" },
@@ -45,7 +60,7 @@ export default defineNuxtConfig({
         },
         {
           property: "twitter:image",
-          content: "https://overrevvv.vercel.app/images/hot.jgp",
+          content: "https://overrevvv.vercel.app/images/pfp.jpg",
         },
         {
           property: "twitter:card",
