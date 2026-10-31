@@ -1,10 +1,10 @@
 {
   "name": "nuxt-app",
   "private": true,
-    "engines": {
+  "engines": {
     "node": "24.0.0",
     "npm": ">=10.0.0"
-},
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -13,10 +13,9 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@types/node": "^18",
-    "nuxt": "^3.21.2"
+    "@types/node": "^22.20.5",
+    "nuxt": "^3.21.11"
   },
   "dependencies": {
     "@tresjs/cientos": "^2.3.0",
