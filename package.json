@@ -24,6 +24,6 @@
     "gsap": "^3.12.5",
     "nuxt3-lenis": "^1.5.9",
     "three": "^0.154.0",
-    "vanilla-tilt": "^1.8.0"
+    "vanilla-tilt": "^1.8.1"
   }
 }
