@@ -1,34 +1,166 @@
 <script lang="ts" setup>
 // Web3Forms access keys are public by design (they only allow sending to your own inbox)
 const ACCESS_KEY = "b42c576f-9eb4-4a36-94ce-bf03dd4ef7b4";
+const ENDPOINT = "https://api.web3forms.com/submit";
+
+// ---- limits / anti-spam config ----
+const LIMITS = { nameMin: 2, nameMax: 60, emailMax: 254, msgMin: 10, msgMax: 1000, maxLinks: 2 };
+const MIN_FILL_MS = 3000;          // humans take longer than 3s to fill a form
+const COOLDOWN_MS = 60 * 1000;     // min gap between two sends
+const MAX_PER_HOUR = 3;            // max sends per browser per hour
+const TIMEOUT_MS = 15000;          // abort a hanging request
+const STORE_KEY = "contact_sends";
+
+const form = reactive({ name: "", email: "", message: "", website: "", botcheck: false });
+const errors = reactive<Record<string, string>>({ name: "", email: "", message: "" });
+const touched = reactive<Record<string, boolean>>({ name: false, email: false, message: false });
 const loading = ref(false);
+const sent = ref(false);
+const sentTo = reactive({ name: "", email: "" });
+const mountedAt = ref(0);
 
-async function onSubmit(e: Event) {
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    // Honeypot: real users never fill this hidden field
-    if (formData.get("botcheck")) return;
-    formData.append("access_key", ACCESS_KEY);
-    formData.append("subject", "New message from portfolio");
+// ---- toast notification ----
+type ToastType = "success" | "error" | "info";
+const toast = reactive({ show: false, type: "info" as ToastType, title: "", text: "" });
+let toastTimer: ReturnType<typeof setTimeout> | undefined;
+function notify(type: ToastType, title: string, text = "") {
+    clearTimeout(toastTimer);
+    Object.assign(toast, { show: true, type, title, text });
+    toastTimer = setTimeout(() => (toast.show = false), 5000);
+}
+function closeToast() {
+    clearTimeout(toastTimer);
+    toast.show = false;
+}
 
-    loading.value = true;
+// ---- validation ----
+const EMAIL_RE = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,24}$/;
+const LINK_RE = /(https?:\/\/|www\.)/gi;
+
+function validateField(field: "name" | "email" | "message"): string {
+    const v = form[field].trim();
+    if (field === "name") {
+        if (!v) return "Please tell me your name";
+        if (v.length < LIMITS.nameMin) return "Name is too short";
+        if (v.length > LIMITS.nameMax) return `Name must be under ${LIMITS.nameMax} characters`;
+        if (/[<>]/.test(v) || LINK_RE.test(v)) return "Name contains invalid characters";
+        LINK_RE.lastIndex = 0;
+    }
+    if (field === "email") {
+        if (!v) return "Please enter your email";
+        if (v.length > LIMITS.emailMax || !EMAIL_RE.test(v) || v.includes("..")) return "Enter a valid email like name@example.com";
+    }
+    if (field === "message") {
+        if (!v) return "Please write a message";
+        if (v.length < LIMITS.msgMin) return `Message needs at least ${LIMITS.msgMin} characters`;
+        if (v.length > LIMITS.msgMax) return `Message must be under ${LIMITS.msgMax} characters`;
+        if ((v.match(LINK_RE) || []).length > LIMITS.maxLinks) return `Please include at most ${LIMITS.maxLinks} links`;
+    }
+    return "";
+}
+function onBlur(field: "name" | "email" | "message") {
+    touched[field] = true;
+    errors[field] = validateField(field);
+}
+function onInput(field: "name" | "email" | "message") {
+    if (touched[field]) errors[field] = validateField(field);
+}
+
+// ---- rate limiting (per browser) ----
+function readSends(): number[] {
     try {
-        const response = await fetch("https://api.web3forms.com/submit", {
-            method: "POST",
-            body: formData,
-        });
-        const data = await response.json();
-        if (response.ok && data.success) {
-            alert("Success! Your message has been sent.");
-            form.reset();
-        } else {
-            alert("Error: " + (data.message || "Could not send your message."));
+        const arr = JSON.parse(localStorage.getItem(STORE_KEY) || "[]");
+        return Array.isArray(arr) ? arr.filter((t) => typeof t === "number" && Date.now() - t < 3600_000) : [];
+    } catch { return []; }
+}
+function writeSends(arr: number[]) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(arr)); } catch { /* storage blocked */ }
+}
+function rateLimitMessage(): string {
+    const sends = readSends();
+    const last = sends[sends.length - 1];
+    if (last && Date.now() - last < COOLDOWN_MS) {
+        return `Please wait ${Math.ceil((COOLDOWN_MS - (Date.now() - last)) / 1000)}s before sending another message`;
+    }
+    if (sends.length >= MAX_PER_HOUR) return "You've reached the hourly message limit. Please try again later";
+    return "";
+}
+
+onMounted(() => { mountedAt.value = Date.now(); });
+onBeforeUnmount(() => clearTimeout(toastTimer));
+
+async function onSubmit() {
+    if (loading.value) return;
+
+    // 1. validate every field
+    (["name", "email", "message"] as const).forEach((f) => { touched[f] = true; errors[f] = validateField(f); });
+    const firstBad = (["name", "email", "message"] as const).find((f) => errors[f]);
+    if (firstBad) {
+        notify("error", "Check the form", errors[firstBad]);
+        (document.querySelector(`[name="${firstBad}"]`) as HTMLElement | null)?.focus();
+        return;
+    }
+
+    // 2. bot traps: honeypots + too-fast submission -> pretend success, send nothing
+    const tooFast = Date.now() - mountedAt.value < MIN_FILL_MS;
+    if (form.website || form.botcheck || tooFast) {
+        if (tooFast && !form.website && !form.botcheck) {
+            notify("info", "Slow down a bit", "Please take a moment and try again");
+            return;
         }
-    } catch (error) {
-        alert("Something went wrong. Please try again.");
+        sentTo.name = form.name.trim(); sentTo.email = form.email.trim();
+        sent.value = true;
+        return;
+    }
+
+    // 3. rate limit + connectivity
+    const limited = rateLimitMessage();
+    if (limited) { notify("error", "Too many requests", limited); return; }
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+        notify("error", "You're offline", "Check your connection and try again");
+        return;
+    }
+
+    // 4. send
+    loading.value = true;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
+    try {
+        const body = new FormData();
+        body.append("access_key", ACCESS_KEY);
+        body.append("subject", "New message from portfolio");
+        body.append("from_name", "Portfolio contact form");
+        body.append("name", form.name.trim());
+        body.append("email", form.email.trim());
+        body.append("replyto", form.email.trim());
+        body.append("message", form.message.trim());
+        body.append("botcheck", "");
+
+        const res = await fetch(ENDPOINT, { method: "POST", body, signal: controller.signal, headers: { Accept: "application/json" } });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+            writeSends([...readSends(), Date.now()]);
+            sentTo.name = form.name.trim(); sentTo.email = form.email.trim();
+            sent.value = true;
+            Object.assign(form, { name: "", email: "", message: "", website: "", botcheck: false });
+            (["name", "email", "message"] as const).forEach((f) => { touched[f] = false; errors[f] = ""; });
+            notify("success", "Message sent", "Thanks for reaching out!");
+        } else if (res.status === 429) {
+            notify("error", "Too many requests", "Please try again in a little while");
+        } else {
+            notify("error", "Couldn't send message", data.message || "Something went wrong. Please try again");
+        }
+    } catch (err: any) {
+        notify("error", err?.name === "AbortError" ? "Request timed out" : "Couldn't send message", "Please check your connection and try again");
     } finally {
+        clearTimeout(timer);
         loading.value = false;
     }
+}
+
+function sendAnother() {
+    sent.value = false;
+    mountedAt.value = Date.now();
 }
 const socials = [
     {
@@ -65,31 +197,83 @@ const socials = [
 </script>
 <template>
     <div>
+        <ClientOnly>
+            <Teleport to="body">
+                <Transition name="toast">
+                    <div v-if="toast.show" class="toastWrap" role="status" aria-live="polite">
+                        <div class="toast" :class="'toast-' + toast.type">
+                            <span class="toastIcon" aria-hidden="true">
+                                <svg v-if="toast.type === 'success'" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                                <svg v-else-if="toast.type === 'error'" viewBox="0 0 24 24"><path d="M12 7v6M12 17h.01" /></svg>
+                                <svg v-else viewBox="0 0 24 24"><path d="M12 11v6M12 7h.01" /></svg>
+                            </span>
+                            <div class="toastBody">
+                                <p class="toastTitle">{{ toast.title }}</p>
+                                <p v-if="toast.text" class="toastText">{{ toast.text }}</p>
+                            </div>
+                            <button type="button" class="toastClose" aria-label="Dismiss notification" @click="closeToast">&times;</button>
+                            <span class="toastBar" :key="toast.title + toast.text" />
+                        </div>
+                    </div>
+                </Transition>
+            </Teleport>
+        </ClientOnly>
         <h3 v-motion-slide-visible-top class="heading my-8 sm:my-24">Contacts
         </h3>
         <div v-motion-slide-visible-bottom class="sm:mt-12 w-full">
             <div class="bg-[#15103088] card blurblur brdr">
                 <p class="headingTitle">
                     Get in touch</p>
-                <form @submit.prevent="onSubmit" class="mt-12 flex flex-col gap-8">
+                <Transition name="swap" mode="out-in">
+                <div v-if="sent" key="done" class="success" role="status">
+                    <svg class="check" viewBox="0 0 52 52" aria-hidden="true">
+                        <circle class="check-circle" cx="26" cy="26" r="24" fill="none" />
+                        <path class="check-mark" fill="none" d="M14 27l8 8 16-17" />
+                    </svg>
+                    <h4 class="text-teal-300 text-2xl sm:text-3xl font-medium mt-6">Message sent!</h4>
+                    <p class="text-white mt-4">Thanks <span class="text-pink-500 font-semibold break-words">{{ sentTo.name }}</span>, I'll get back to you at</p>
+                    <p class="text-sky-300 break-all">{{ sentTo.email }}</p>
+                    <button type="button" class="btn mt-8" @click="sendAnother">Send another</button>
+                </div>
+                <form v-else key="form" novalidate @submit.prevent="onSubmit" class="mt-12 flex flex-col gap-8" aria-label="Contact form">
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your Name</span>
-                        <input type='text' name='name' required placeholder="What's your good name?" class="inputBox" />
+                        <input v-model="form.name" type='text' name='name' required autocomplete="name"
+                            :maxlength="LIMITS.nameMax" placeholder="What's your good name?" class="inputBox"
+                            :class="{ inputErr: errors.name }" :aria-invalid="!!errors.name"
+                            @blur="onBlur('name')" @input="onInput('name')" />
+                        <span v-if="errors.name" class="fieldErr" role="alert">{{ errors.name }}</span>
                     </label>
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your email</span>
-                        <input type='email' name='email' required placeholder="What's your web address?" class="inputBox" />
+                        <input v-model="form.email" type='email' name='email' required autocomplete="email" inputmode="email"
+                            :maxlength="LIMITS.emailMax" placeholder="What's your web address?" class="inputBox"
+                            :class="{ inputErr: errors.email }" :aria-invalid="!!errors.email"
+                            @blur="onBlur('email')" @input="onInput('email')" />
+                        <span v-if="errors.email" class="fieldErr" role="alert">{{ errors.email }}</span>
                     </label>
                     <label class="flex flex-col">
                         <span class="text-white font-medium mb-4">Your Message</span>
-                        <textarea rows={7} name='message' required placeholder='What you want to say?' class="inputBox" />
+                        <textarea v-model="form.message" rows="7" name='message' required
+                            :maxlength="LIMITS.msgMax" placeholder='What you want to say?' class="inputBox"
+                            :class="{ inputErr: errors.message }" :aria-invalid="!!errors.message"
+                            @blur="onBlur('message')" @input="onInput('message')" />
+                        <span class="counter" :class="{ 'text-pink-500': form.message.length > LIMITS.msgMax - 50 }">
+                            {{ form.message.length }}/{{ LIMITS.msgMax }}</span>
+                        <span v-if="errors.message" class="fieldErr" role="alert">{{ errors.message }}</span>
                     </label>
 
-                    <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" style="display: none" />
-                    <button type='submit' class="btn" :disabled="loading">
+                    <!-- honeypots: invisible to people, bots fill them -->
+                    <div class="hp" aria-hidden="true">
+                        <label>Website <input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+                        <input v-model="form.botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" />
+                    </div>
+
+                    <button type='submit' class="btn" :disabled="loading" :aria-busy="loading">
                         {{ loading ? "Sending..." : "Send" }}
                     </button>
                 </form>
+                </Transition>
             </div>
         </div>
         <div v-motion-slide-visible-bottom class=" sm:mt-12  w-full font-mono">
@@ -160,4 +344,44 @@ input {
 
 .smlbox {
     @apply w-1/3 text-center;
-}</style>
+}
+.btn:disabled { @apply opacity-60 cursor-not-allowed; }
+.inputErr { @apply ring-1 ring-pink-500; }
+.fieldErr { @apply text-pink-500 text-sm mt-2 text-center; }
+.counter { @apply text-xs text-[#aaa6c3] mt-2 text-right w-[90%] mx-auto; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
+
+/* success state */
+.success { @apply flex flex-col items-center text-center px-4 py-12 sm:py-16; }
+.check { width: 84px; height: 84px; }
+.check-circle { stroke: #5eead4; stroke-width: 2.5; stroke-dasharray: 151; stroke-dashoffset: 151; animation: draw .7s ease forwards; }
+.check-mark { stroke: #5eead4; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; animation: draw .4s .55s ease forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.swap-enter-active, .swap-leave-active { transition: opacity .25s ease, transform .25s ease; }
+.swap-enter-from, .swap-leave-to { opacity: 0; transform: translateY(10px); }
+
+/* toast */
+.toastWrap { position: fixed; top: 4.5rem; left: 0; right: 0; z-index: 9999; display: flex; justify-content: center; padding: 0 1rem; pointer-events: none; }
+.toast { position: relative; overflow: hidden; pointer-events: auto; display: flex; align-items: flex-start; gap: .75rem; width: 100%; max-width: 24rem;
+  padding: .85rem 1rem; border-radius: 1rem; background: #151030f2; backdrop-filter: blur(12px); color: #fff; font-family: 'Kanit', sans-serif;
+  border: 1px solid; border-color: #2563eb #2563eb #db2777 #db2777; box-shadow: 0 10px 30px #050816cc; }
+.toastIcon { flex: none; width: 1.75rem; height: 1.75rem; border-radius: 9999px; display: grid; place-items: center; }
+.toastIcon svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: #050816; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.toast-success .toastIcon { background: #5eead4; }
+.toast-error .toastIcon { background: #ec4899; }
+.toast-info .toastIcon { background: #7dd3fc; }
+.toastBody { flex: 1; min-width: 0; text-align: left; }
+.toastTitle { font-weight: 600; line-height: 1.3; }
+.toast-success .toastTitle { color: #5eead4; }
+.toast-error .toastTitle { color: #ec4899; }
+.toast-info .toastTitle { color: #7dd3fc; }
+.toastText { font-size: .875rem; color: #aaa6c3; margin-top: .15rem; word-break: break-word; }
+.toastClose { flex: none; color: #aaa6c3; font-size: 1.4rem; line-height: 1; padding: 0 .25rem; background: none; border: 0; cursor: pointer; }
+.toastClose:hover { color: #fff; }
+.toastBar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; transform-origin: left; animation: bar 5s linear forwards;
+  background-image: linear-gradient(90deg, #6665cd, #af1db7); }
+@keyframes bar { to { transform: scaleX(0); } }
+.toast-enter-active, .toast-leave-active { transition: opacity .3s ease, transform .3s ease; }
+.toast-enter-from, .toast-leave-to { opacity: 0; transform: translateY(-14px); }
+@media (prefers-reduced-motion: reduce) { .toastBar, .check-circle, .check-mark { animation-duration: 0.01s; } }
+</style>
