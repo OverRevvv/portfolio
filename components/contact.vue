@@ -18,6 +18,9 @@ const loading = ref(false);
 const sent = ref(false);
 const sentTo = reactive({ name: "", email: "" });
 const mountedAt = ref(0);
+// persistent in-form error (kept until the next attempt) so the user can retry
+const submitError = reactive({ show: false, title: "", text: "", retryable: true });
+const FALLBACK_EMAIL = "arnavbabu2002@gmail.com";
 
 // ---- toast notification ----
 type ToastType = "success" | "error" | "info";
@@ -121,8 +124,39 @@ async function onSubmit() {
         return;
     }
 
-    // 4. send
+    // 4. send (one automatic retry for transient failures)
+    submitError.show = false;
     loading.value = true;
+    try {
+        let result = await sendOnce();
+        if (!result.ok && result.transient) {
+            await new Promise((r) => setTimeout(r, 1200));
+            result = await sendOnce();
+        }
+        if (result.ok) {
+            writeSends([...readSends(), Date.now()]);
+            sentTo.name = form.name.trim(); sentTo.email = form.email.trim();
+            sent.value = true;
+            Object.assign(form, { name: "", email: "", message: "", website: "", botcheck: false });
+            (["name", "email", "message"] as const).forEach((f) => { touched[f] = false; errors[f] = ""; });
+            notify("success", "Message sent", "Thanks for reaching out!");
+        } else {
+            fail(result.title, result.text, result.retryable);
+        }
+    } catch (err) {
+        // anything unexpected: never leave the button stuck or the user without feedback
+        console.error("[contact] unexpected error", err);
+        fail("Something went wrong", "An unexpected error occurred. Your message was not sent.", true);
+    } finally {
+        loading.value = false;
+    }
+}
+
+type SendResult =
+    | { ok: true }
+    | { ok: false; title: string; text: string; retryable: boolean; transient: boolean };
+
+async function sendOnce(): Promise<SendResult> {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
@@ -137,25 +171,43 @@ async function onSubmit() {
         body.append("botcheck", "");
 
         const res = await fetch(ENDPOINT, { method: "POST", body, signal: controller.signal, headers: { Accept: "application/json" } });
-        const data = await res.json().catch(() => ({}));
-        if (res.ok && data.success) {
-            writeSends([...readSends(), Date.now()]);
-            sentTo.name = form.name.trim(); sentTo.email = form.email.trim();
-            sent.value = true;
-            Object.assign(form, { name: "", email: "", message: "", website: "", botcheck: false });
-            (["name", "email", "message"] as const).forEach((f) => { touched[f] = false; errors[f] = ""; });
-            notify("success", "Message sent", "Thanks for reaching out!");
-        } else if (res.status === 429) {
-            notify("error", "Too many requests", "Please try again in a little while");
-        } else {
-            notify("error", "Couldn't send message", data.message || "Something went wrong. Please try again");
-        }
+
+        let data: any = null;
+        try { data = await res.json(); } catch { /* non-JSON body (proxy/HTML error page) */ }
+
+        if (res.ok && data?.success) return { ok: true };
+
+        const serverMsg = typeof data?.message === "string" ? data.message : "";
+        if (res.status === 429)
+            return { ok: false, title: "Too many requests", text: "The form service is busy. Please try again in a few minutes.", retryable: true, transient: false };
+        if (res.status === 400 || res.status === 422)
+            return { ok: false, title: "Message rejected", text: serverMsg || "The form service couldn't accept this message. Please check your details.", retryable: true, transient: false };
+        if (res.status === 401 || res.status === 403)
+            return { ok: false, title: "Form is unavailable", text: "The contact form isn't configured correctly right now. Please email me directly instead.", retryable: false, transient: false };
+        if (res.status >= 500)
+            return { ok: false, title: "Service error", text: "The form service is having trouble. Please try again shortly.", retryable: true, transient: true };
+        if (!data)
+            return { ok: false, title: "Unexpected response", text: "The server sent something unreadable. Please try again.", retryable: true, transient: true };
+        return { ok: false, title: "Couldn't send message", text: serverMsg || "Something went wrong. Please try again.", retryable: true, transient: false };
     } catch (err: any) {
-        notify("error", err?.name === "AbortError" ? "Request timed out" : "Couldn't send message", "Please check your connection and try again");
+        if (err?.name === "AbortError")
+            return { ok: false, title: "Request timed out", text: "The server took too long to respond. Please try again.", retryable: true, transient: true };
+        if (typeof navigator !== "undefined" && navigator.onLine === false)
+            return { ok: false, title: "You're offline", text: "Check your internet connection and try again.", retryable: true, transient: false };
+        return { ok: false, title: "Network error", text: "Couldn't reach the server. It may be blocked by an extension or your connection.", retryable: true, transient: true };
     } finally {
         clearTimeout(timer);
-        loading.value = false;
     }
+}
+
+function fail(title: string, text: string, retryable: boolean) {
+    Object.assign(submitError, { show: true, title, text, retryable });
+    notify("error", title, text);
+    nextTick(() => document.querySelector(".errBanner")?.scrollIntoView({ block: "center", behavior: "smooth" }));
+}
+
+function dismissError() {
+    submitError.show = false;
 }
 
 function sendAnother() {
@@ -263,6 +315,17 @@ const socials = [
                         <span v-if="errors.message" class="fieldErr" role="alert">{{ errors.message }}</span>
                     </label>
 
+                    <div v-if="submitError.show" class="errBanner" role="alert">
+                        <p class="errTitle">{{ submitError.title }}</p>
+                        <p class="errText">{{ submitError.text }}</p>
+                        <p class="errText">Your message is still here. You can also email me at
+                            <a :href="`mailto:${FALLBACK_EMAIL}`" class="underline text-sky-300">{{ FALLBACK_EMAIL }}</a>.</p>
+                        <div class="errActions">
+                            <button v-if="submitError.retryable" type="submit" class="errBtn" :disabled="loading">Try again</button>
+                            <button type="button" class="errBtn errBtnGhost" @click="dismissError">Dismiss</button>
+                        </div>
+                    </div>
+
                     <!-- honeypots: invisible to people, bots fill them -->
                     <div class="hp" aria-hidden="true">
                         <label>Website <input v-model="form.website" type="text" name="website" tabindex="-1" autocomplete="off" /></label>
@@ -349,6 +412,13 @@ input {
 .inputErr { @apply ring-1 ring-pink-500; }
 .fieldErr { @apply text-pink-500 text-sm mt-2 text-center; }
 .counter { @apply text-xs text-[#aaa6c3] mt-2 text-right w-[90%] mx-auto; }
+.errBanner { @apply w-[90%] mx-auto rounded-xl p-4 text-center bg-[#15103088] border border-pink-500; }
+.errTitle { @apply text-pink-500 font-semibold; }
+.errText { @apply text-sm text-[#aaa6c3] mt-1 break-words; }
+.errActions { @apply flex justify-center gap-3 mt-3; }
+.errBtn { @apply bg-[#151030] text-white font-medium text-sm py-2 px-5 rounded-lg border border-pink-500 shadow-md shadow-[#050816]; }
+.errBtn:disabled { @apply opacity-60 cursor-not-allowed; }
+.errBtnGhost { @apply border-transparent text-[#aaa6c3]; }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 
 /* success state */
