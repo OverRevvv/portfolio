@@ -23,7 +23,7 @@
     "@vueuse/motion": "^2.0.0",
     "gsap": "^3.12.5",
     "nuxt3-lenis": "^1.5.9",
-    "three": "^0.154.0",
+    "three": "^0.186.1",
     "vanilla-tilt": "^1.8.0"
   }
 }
