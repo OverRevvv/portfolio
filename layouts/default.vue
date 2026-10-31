@@ -10,7 +10,7 @@ welcomeScreen();
 </script>
 
 <template>
-    <div class="bg-[#050816]">
+    <div class="bg-[#050816] isolate">
         <ClientOnly>
             <StarField />
         </ClientOnly>
